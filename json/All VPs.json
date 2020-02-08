@@ -22,6 +22,15 @@
     "mapFilter": "All Staff",
     "mainMap":
     [
+    {"name": "香港", "value": 90},
+     {"name": "台北", "value": 90},
+     {"name": "新竹", "value": 9},
+     {"name": "高雄", "value": 9},
+     {"name": "基隆", "value": 9},
+     {"name": "台中", "value": 9},
+     {"name": "台南", "value": 9},
+     {"name": "嘉义", "value": 9},
+    {"name": "澳门", "value": 90},
     {"name": "海门", "value": 9},
     {"name": "鄂尔多斯", "value": 12},
     {"name": "招远", "value": 12},

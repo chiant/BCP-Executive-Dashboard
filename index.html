@@ -163,7 +163,7 @@
                                 <div class="topbar-divider d-none d-sm-block"></div>
                                 <li class="nav-item dropdown no-arrow">
                                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <strong><span class="mr-2 d-none d-lg-inline text-gray-600">All Staff</span></strong>
+                                        <strong><span id='mapFilter' class="mr-2 d-none d-lg-inline text-gray-600">All Staff</span></strong>
                                     </a>
                                     <!-- Dropdown - User Information -->
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -219,7 +219,7 @@
                             <h5 class="my-0"><strong>Action Required</strong></h5>
                         </div>
                         <div class="card-body" style="padding-left: 1em; padding-right: .1em;">
-                            <p style="margin-bottom: .1em; padding-bottom: 0;"><strong>Incomplete Survey Today</strong></p>
+                            <p style="margin-bottom: .1em; padding-bottom: 0;"><strong id='notJoinTitle'>Incomplete Survey Today</strong></p>
                             <table class="table table-sm" id="notJoin" data-toggle="table" data-height="112">
                                 <thead class="thead-blue">
                                     <tr>
@@ -230,7 +230,7 @@
                                     </tr>
                                 </thead>
                             </table>
-                            <p style="margin-top: .5em; margin-bottom: .1em; padding-bottom: 0;"><strong>Revoke to Be Confirmed</strong></p>
+                            <p style="margin-top: .5em; margin-bottom: .1em; padding-bottom: 0;"><strong id='revokeConfirmTitle'>Revoke to Be Confirmed</strong></p>
                             <table class="table table-sm" id="revokeConfirm" data-toggle="table" data-height="112">
                                 <thead class="thead-blue">
                                     <tr>
@@ -241,7 +241,7 @@
                                     </tr>
                                 </thead>
                             </table>
-                            <p style="margin-top: .5em; margin-bottom: .1em; padding-bottom: 0;"><strong>New Quarantine (Return to GD)</strong></p>
+                            <p style="margin-top: .5em; margin-bottom: .1em; padding-bottom: 0;"><strong id='newQuaraTitle'>New Quarantine (Return to GD)</strong></p>
                             <table class="table table-sm" id="newQuara" data-toggle="table" data-height="112">
                                 <thead class="thead-blue">
                                     <tr>
@@ -252,7 +252,7 @@
                                     </tr>
                                 </thead>
                             </table>
-                            <p style="margin-top: .5em; margin-bottom: .1em; padding-bottom: 0;"><strong>New Risk Case Indentified</strong></p>
+                            <p style="margin-top: .5em; margin-bottom: .1em; padding-bottom: 0;"><strong id='newRiskTblTitle'>New Risk Case Indentified</strong></p>
                             <table class="table table-sm" id="newRiskTbl" data-toggle="table" data-height="112">
                                 <thead class="thead-blue">
                                     <tr>
@@ -296,7 +296,7 @@
         <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=kcRaqs0tWA8aMAYIi4Z22RVW9T5hsOPG"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
 -->
-        <script type="text/javascript" src="./js/geoCoordMap.js"></script>
+        <script type="text/javascript" src="./js/cityGeoCoordMap.js"></script>
         <script type="text/javascript" src="./js/index.js"></script>
 
 

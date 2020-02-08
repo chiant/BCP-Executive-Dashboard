@@ -266,62 +266,7 @@
     }
 ],
 
-    "revokeConfirm": [
-        {
-            "reportDate": "05FEB2020",
-            "id": 45001800,
-            "site": "NHC",
-            "name": "Staff Name 0",
-            "mobilephone": 13522897654,
-            "revokeReason": "Risky Location",
-            "vp": "Stephen"
-    },
-        {
-            "reportDate": "05FEB2020",
-            "id": 45001801,
-            "site": "NHC",
-            "name": "Staff Name 1",
-            "mobilephone": 3,
-            "revokeReason": "Been in Hubei",
-            "vp": "John"
-    },
-        {
-            "reportDate": "05FEB2020",
-            "id": 45001802,
-            "site": "NHC",
-            "name": "Staff Name 2",
-            "mobilephone": 3,
-            "revokeReason": "Close Contact",
-            "vp": "Tom"
-    },
-        {
-            "reportDate": "05FEB2020",
-            "id": 45001803,
-            "site": "NHC",
-            "name": "Staff Name 3",
-            "mobilephone": 3,
-            "revokeReason": "Travel Today",
-            "vp": "Jenny"
-    },
-        {
-            "reportDate": "05FEB2020",
-            "id": 45001804,
-            "site": "NHC",
-            "name": "Staff Name 4",
-            "mobilephone": 3,
-            "revokeReason": "in Hubei Now",
-            "vp": "Walt"
-    },
-        {
-            "reportDate": "05FEB2020",
-            "id": 45001805,
-            "site": "NHC",
-            "name": "Staff Name 5",
-            "mobilephone": 3,
-            "revokeReason": "Risky Location",
-            "vp": "Angel"
-    }
-],
+    "revokeConfirm": [],
 
     "newQuara": [
         {

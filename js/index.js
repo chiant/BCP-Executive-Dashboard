@@ -333,6 +333,13 @@
                     mainMapObj.setOption(mainMapOptUpdate);
                 };
                 
+                
+                
+                $('#notJoinTitle').html('Incomplete Survey Today'+' ('+data.notJoin.length+')');
+                $('#revokeConfirmTitle').html('Revoke to Be Confirmed'+' ('+data.revokeConfirm.length+')');
+                $('#newQuaraTitle').html('New Quarantine (Return to GD)'+' ('+data.newQuara.length+')');
+                $('#newRiskTblTitle').html('New Risk Case Indentified'+' ('+data.newRiskTbl.length+')');
+               
                 $('#notJoin').bootstrapTable('load', data.notJoin);
                 $('#revokeConfirm').bootstrapTable('load', data.revokeConfirm);
                 $('#newQuara').bootstrapTable('load', data.newQuara);
@@ -375,6 +382,8 @@
 //          var maplink='http:servermaplink?vpsel='+vpSel+'&mapfilter='+mapFilter;
             
             loadMainMap(mapLink);
+            
+            $('#mapFilter').html(mapFilter);
         }
 
         function selVP(vpSel){
