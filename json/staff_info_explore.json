@@ -1,0 +1,136 @@
+{
+    "staffdata": [
+        {
+            "reportDate": "05FEB2020",
+            "id": 45209892,
+            "site": "NHC",
+            "name": "Tomas Wang",
+            "mobilephone": 13522897654,
+            "currentLocation": [113.33388879467501, 23.145579837441266],
+            "closestRiskLocation": [113.33288879467501, 23.135579837441266],
+            "currentAddress": "太古汇",
+            "closestRiskAddress": "天河新作",
+            "risktype": "Risky Location",
+            "vp": "Stephen"
+    },
+        {
+            "reportDate": "05FEB2020",
+            "id": 45209893,
+            "site": "NHC",
+            "name": "Mary Lee",
+            "mobilephone": 3,
+            "currentLocation":  [113.52884781192102, 23.080374684139],
+            "closestRiskLocation":  [113.53884781192102, 23.0940374684139],  
+            "currentAddress": "南岗街广海路10号",
+            "closestRiskAddress": "南岗街广海路亨元花园",
+            "risktype": "Been in Hubei",
+            "vp": "John"
+    },
+        {
+            "reportDate": "05FEB2020",
+            "id": 45219892,
+            "site": "NHC",
+            "name": "Holy Smoke",
+            "mobilephone": 3,
+            "currentLocation": [113.30346172248892, 23.12132548150483],
+            "closestRiskLocation": [113.39346172248892, 23.12532548150483],  
+            "currentAddress": "车陂街美好居附近",
+            "closestRiskAddress": "车陂街美好居",
+            "risktype": "Close Contact",
+            "vp": "Tom"
+    },
+        {
+            "reportDate": "05FEB2020",
+            "id": 45203892,
+            "site": "NHC",
+            "name": "Good Night",
+            "mobilephone": 3,
+            "currentLocation":  [113.5803997077169, 23.339014260322355],
+            "closestRiskLocation":  [113.5403997077169, 23.331014260322355],  
+            "currentAddress": "龙湖街11号",
+            "closestRiskAddress": "龙湖街万科幸福誉",            
+            "risktype": "Travel Today",
+            "vp": "Jenny"
+    },
+        {
+            "reportDate": "05FEB2020",
+            "id": 45209392,
+            "site": "NHC",
+            "name": "Lucy Pig",
+            "mobilephone": 3,
+            "currentLocation": [113.43932278159738, 23.214368452666604],
+            "closestRiskLocation": [113.42932278159738, 23.114368452666604],  
+            "currentAddress": "金世花园",
+            "closestRiskAddress": "金碧世纪花园",
+            "risktype": "in Hubei Now",
+            "vp": "Walt"
+    },
+
+        {
+            "reportDate": "05FEB2020",
+            "id": 45209893,
+            "site": "NHC",
+            "name": "Sad Rome",
+            "mobilephone": 3,
+            "currentLocation":  [113.24213499295431, 23.412198591510476],
+            "closestRiskLocation": [113.23213499295431, 23.402198591510476],  
+            "currentAddress": "太古花城街道南航花园汇",
+            "closestRiskAddress": "花城街道南航花园",
+            "risktype": "Been in Hubei",
+            "vp": "John"
+    },
+        {
+            "reportDate": "05FEB2020",
+            "id": 45219892,
+            "site": "NHC",
+            "name": "Like Meat",
+            "mobilephone": 3,
+            "currentLocation": [113.46562163384762, 23.105971900301146],
+            "closestRiskLocation": [113.45462163384762, 23.107571900301146],  
+            "currentAddress": "大沙街丰北路君城",
+            "closestRiskAddress": "大沙街丰乐北路君和名城",            
+            "risktype": "Close Contact",
+            "vp": "Tom"
+    },
+        {
+            "reportDate": "05FEB2020",
+            "id": 45203892,
+            "site": "NHC",
+            "name": "Sole Lion",
+            "mobilephone": 3,
+            "currentLocation":  [113.36937342175196, 23.18347989875261],
+            "closestRiskLocation":  [113.36637342175196, 23.12347989875261],  
+            "currentAddress": "太古汇",
+            "closestRiskAddress": "天河新作",
+            "risktype": "Travel Today",
+            "vp": "Jenny"
+    },
+        {
+            "reportDate": "05FEB2020",
+            "id": 45209392,
+            "site": "NHC",
+            "name": "Confused Jack",
+            "mobilephone": 3,
+            "currentLocation": [113.31588879467501, 23.145579837441266],
+            "closestRiskLocation": [113.33288879467501, 23.135579837441266],  
+            "currentAddress": "太海景花园古汇",
+            "closestRiskAddress": "海景花园",
+            "risktype": "in Hubei Now",
+            "vp": "Walt"
+    },
+        {
+            "reportDate": "05FEB2020",
+            "id": 45509892,
+            "site": "NHC",
+            "name": "Self Control",
+            "mobilephone": 3,
+            "currentLocation":  [113.35676033424932, 23.19619312588881],
+            "closestRiskLocation":  [113.34676033424932, 23.11619312588881],  
+            "currentAddress": "太古猎德街道珠光衘景汇",
+            "closestRiskAddress": "猎德街道珠光衘景",
+            "risktype": "Risky Location",
+            "vp": "Angel"
+    }
+]
+
+}

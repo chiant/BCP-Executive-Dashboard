@@ -96,7 +96,7 @@
                         coordinateSystem: 'geo',
                         data: convertData([]),
                         symbolSize: function (val) {
-                            return val[2] / 10;
+                            return Math.log(val[2] +10)*3;
                         },
                         label: {
                             normal: {

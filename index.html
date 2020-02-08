@@ -16,12 +16,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
 
-<!--    <link rel="stylesheet" href="./css/index.css">-->
+    <!--    <link rel="stylesheet" href="./css/index.css">-->
 
     <link rel="shortcut icon" href="./img/favicon.ico">
-    
+
     <style>
-    * {
+        * {
             font-family: Arial Narrow, Helvetica, sans-serif;
         }
 
@@ -30,14 +30,30 @@
             background-color: #3195f1;
             border-color: #0d7adf;
             font-family: "Arial Narrow";
-            font-size: .2em;
+            font-size: .8em;
         }
 
         td {
             font-family: "Arial Narrow";
-            font-size: .2em;
+            font-size: .8em;
             padding-left: 0em;
             padding-right: 0em;
+        }
+
+        .map-panel-gap {
+            margin-bottom: 1.5em;
+        }
+
+        .surveyStat-height {
+            height: 25%;
+        }
+
+        .workStatus-height {
+            height: 32%;
+        }
+
+        .riskFactor-height {
+            height: 35%;
         }
 
     </style>
@@ -107,7 +123,7 @@
                             <h5 class="my-0"><strong>GSC Overview</strong></h5>
                         </div>
                         <div class="card-body">
-                            <div class="row no-gutters" style="margin-bottom: 3em">
+                            <div class="row no-gutters map-panel-gap">
                                 <div class="col-md-3">
                                     <div>
                                         <h1><strong id="confirmedInfection"></strong></h1>
@@ -157,13 +173,13 @@
                                         </a>
                                         <div class="dropdown-divider"></div>
                                         <a id="In Hubei Now" class="dropdown-item" href="javascript:void(0)" onclick="selMap(this.id)">
-                                          <i class="fas fa-cogs fa-sm fa-fw mr-2 small text-gray-400"></i>
+                                            <i class="fas fa-cogs fa-sm fa-fw mr-2 small text-gray-400"></i>
                                             In Hubei Now
                                         </a>
                                         <a id="Been in Hubei" class="dropdown-item" href="javascript:void(0)" onclick="selMap(this.id)">
                                             <i class="fas fa-cogs fa-sm fa-fw mr-2 small text-gray-400"></i>
                                             Been in Hubei
-                                        </a> 
+                                        </a>
                                         <a id="Close Contact" class="dropdown-item" href="javascript:void(0)" onclick="selMap(this.id)">
                                             <i class="fas fa-cogs fa-sm fa-fw mr-2 small text-gray-400"></i>
                                             Close Contact
@@ -193,9 +209,9 @@
                             <h5 class="my-0"><strong>Today's Update</strong></h5>
                         </div>
                         <div class="card-body">
-                            <div class="row" style="height:30%" id="surveyStat"></div>
-                            <div class="row" style="height:38%" id="workStatus"></div>
-                            <div class="row" style="height:42%" id="riskFactor"></div>
+                            <div class="row surveyStat-height" id="surveyStat"></div>
+                            <div class="row workStatus-height" id="workStatus"></div>
+                            <div class="row riskFactor-height" id="riskFactor"></div>
                         </div>
                     </div>
                     <div class="card mb-4 box-shadow">
@@ -204,49 +220,49 @@
                         </div>
                         <div class="card-body" style="padding-left: 1em; padding-right: .1em;">
                             <p style="margin-bottom: .1em; padding-bottom: 0;"><strong>Incomplete Survey Today</strong></p>
-                                <table class="table table-sm" id="notJoin" 	data-toggle="table" data-height="112" >
-                                    <thead class="thead-blue">
-                                        <tr>
-                                            <th data-field="id" data-width="5" data-width-unit="%" data-sortable="true">ID</th>
-                                            <th data-field="name" data-width="35" data-width-unit="%" data-sortable="true">Name</th>
-                                            <th data-field="mobilephone" data-width="30" data-width-unit="%" data-sortable="true">Contact</th>
-                                            <th data-field="vp" data-width="30" data-width-unit="%" data-sortable="true">VP</th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                            <table class="table table-sm" id="notJoin" data-toggle="table" data-height="112">
+                                <thead class="thead-blue">
+                                    <tr>
+                                        <th data-field="id" data-width="5" data-width-unit="%" data-sortable="true">ID</th>
+                                        <th data-field="name" data-width="35" data-width-unit="%" data-sortable="true">Name</th>
+                                        <th data-field="mobilephone" data-width="30" data-width-unit="%" data-sortable="true">Contact</th>
+                                        <th data-field="vp" data-width="30" data-width-unit="%" data-sortable="true">VP</th>
+                                    </tr>
+                                </thead>
+                            </table>
                             <p style="margin-top: .5em; margin-bottom: .1em; padding-bottom: 0;"><strong>Revoke to Be Confirmed</strong></p>
-                                <table class="table table-sm" id="revokeConfirm" 	data-toggle="table" data-height="112">
-                                    <thead class="thead-blue">
-                                        <tr>
-                                            <th data-field="id" data-width="5" data-width-unit="%" data-sortable="true">ID</th>
-                                            <th data-field="name" data-width="35" data-width-unit="%" data-sortable="true">Name</th>
-                                            <th data-field="revokeReason" data-width="30" data-width-unit="%" data-sortable="true">Revoke Reason</th>
-                                            <th data-field="vp" data-width="30" data-width-unit="%" data-sortable="true">VP</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                                 <p style="margin-top: .5em; margin-bottom: .1em; padding-bottom: 0;"><strong>New Quarantine (Return to GD)</strong></p>
-                                <table class="table table-sm" id="newQuara" 	data-toggle="table" data-height="112">
-                                    <thead class="thead-blue">
-                                        <tr>
-                                            <th data-field="id" data-width="5" data-width-unit="%" data-sortable="true">ID</th>
-                                            <th data-field="name" data-width="35" data-width-unit="%" data-sortable="true">Name</th>
-                                            <th data-field="Departure" data-width="30" data-width-unit="%" data-sortable="true">Departure</th>
-                                            <th data-field="vp" data-width="30" data-width-unit="%" data-sortable="true">VP</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                               <p style="margin-top: .5em; margin-bottom: .1em; padding-bottom: 0;"><strong>New Risk Case Indentified</strong></p>
-                                <table class="table table-sm" id="newRiskTbl" 	data-toggle="table" data-height="112">
-                                    <thead class="thead-blue">
-                                        <tr>
-                                            <th data-field="id" data-width="5" data-width-unit="%" data-sortable="true">ID</th>
-                                            <th data-field="name" data-width="35" data-width-unit="%" data-sortable="true">Name</th>
-                                            <th data-field="risktype" data-width="30" data-width-unit="%" data-sortable="true">Risk Type</th>
-                                            <th data-field="vp" data-width="30" data-width-unit="%" data-sortable="true">VP</th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                            <table class="table table-sm" id="revokeConfirm" data-toggle="table" data-height="112">
+                                <thead class="thead-blue">
+                                    <tr>
+                                        <th data-field="id" data-width="5" data-width-unit="%" data-sortable="true">ID</th>
+                                        <th data-field="name" data-width="35" data-width-unit="%" data-sortable="true">Name</th>
+                                        <th data-field="revokeReason" data-width="30" data-width-unit="%" data-sortable="true">Revoke Reason</th>
+                                        <th data-field="vp" data-width="30" data-width-unit="%" data-sortable="true">VP</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <p style="margin-top: .5em; margin-bottom: .1em; padding-bottom: 0;"><strong>New Quarantine (Return to GD)</strong></p>
+                            <table class="table table-sm" id="newQuara" data-toggle="table" data-height="112">
+                                <thead class="thead-blue">
+                                    <tr>
+                                        <th data-field="id" data-width="5" data-width-unit="%" data-sortable="true">ID</th>
+                                        <th data-field="name" data-width="35" data-width-unit="%" data-sortable="true">Name</th>
+                                        <th data-field="Departure" data-width="30" data-width-unit="%" data-sortable="true">Departure</th>
+                                        <th data-field="vp" data-width="30" data-width-unit="%" data-sortable="true">VP</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <p style="margin-top: .5em; margin-bottom: .1em; padding-bottom: 0;"><strong>New Risk Case Indentified</strong></p>
+                            <table class="table table-sm" id="newRiskTbl" data-toggle="table" data-height="112">
+                                <thead class="thead-blue">
+                                    <tr>
+                                        <th data-field="id" data-width="5" data-width-unit="%" data-sortable="true">ID</th>
+                                        <th data-field="name" data-width="35" data-width-unit="%" data-sortable="true">Name</th>
+                                        <th data-field="risktype" data-width="30" data-width-unit="%" data-sortable="true">Risk Type</th>
+                                        <th data-field="vp" data-width="30" data-width-unit="%" data-sortable="true">VP</th>
+                                    </tr>
+                                </thead>
+                            </table>
                         </div>
                     </div>
 
@@ -275,13 +291,12 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
 
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
-<!--        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>-->
+        <!--        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>-->
         <!--
         <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=kcRaqs0tWA8aMAYIi4Z22RVW9T5hsOPG"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
 -->
         <script type="text/javascript" src="./js/geoCoordMap.js"></script>
-        <script type="text/javascript" src="./js/data.js"></script>
         <script type="text/javascript" src="./js/index.js"></script>
 
 

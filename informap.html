@@ -1,0 +1,356 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>Staff Information Explorer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+
+
+    <style>
+        * {
+            font-family: Arial Narrow, Helvetica, sans-serif;
+        }
+
+        html,
+        body,
+        #GDMap {
+            height: 100%;
+        }
+
+        #infoPanel {
+            float: left;
+            background-color: rgba(0, 123, 255, 0.1);
+            border-right: 3px;
+            border-right-color: rgba(0, 123, 255, 0.4);
+            border-right-style: solid;
+            height: 100%;
+            width: 40%;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+
+        }
+
+        .table .thead-blue th {
+            color: #fff;
+            background-color: #3195f1;
+            border-color: #0d7adf;
+            font-family: "Arial Narrow";
+            font-size: 1em;
+            text-align: center;
+        }
+
+        .table .thead-dark th {
+            font-family: "Arial Narrow";
+            font-size: 1em;
+            text-align: center;
+        }
+
+        tr {
+            background-color: white;
+            border-bottom-color: black;
+            border: 4px;
+        }
+
+        tr:hover {
+            background-color: yellow;
+            cursor: pointer;
+        }
+
+        td {
+            font-family: "Arial Narrow";
+            /*            background-color: aliceblue;*/
+            text-align: center;
+            font-size: 1em;
+            padding-left: 1em;
+            padding-right: 1em;
+
+        }
+
+        .amap-marker-label {
+            position: absolute;
+            z-index: 2;
+            border: 1px solid rgba(0, 0, 255, 0.2);
+
+            background-color: rgba(0, 0, 255, 0.2);
+            white-space: nowrap;
+            cursor: default;
+            padding: 2px;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 12px;
+            text-align: center;
+        }
+        
+        
+        .redlabel{
+            background-color: rgba(255,140,105, 1);
+            border: 3px solid rgba(255,140,105, 1);
+            font-size: 16px;
+            margin: 0px;
+            padding: 0px;
+
+        }
+        #showAll {
+            margin: .6em;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="infoPanel">
+        <h2><strong>Staff Information Explorer</strong></h2>
+
+        <table class="table table-sm" id="staffListTbl" data-toggle="table" data-height="200">
+            <thead class="thead-dark">
+                <tr>
+                    <th data-field="id" data-width="5" data-width-unit="%" data-sortable="true">ID</th>
+                    <th data-field="name" data-width="45" data-width-unit="%" data-sortable="true">Name</th>
+                    <th data-field="risktype" data-width="30" data-width-unit="%" data-sortable="true">Risk Type</th>
+                    <th data-field="vp" data-width="20" data-width-unit="%" data-sortable="true">VP</th>
+                </tr>
+            </thead>
+        </table>
+            <div class='row'>
+                <div class='m-auto'><button id="showAll" class="btn btn-info" type="submit" onclick="showAll()">Show All</button></div>
+            </div>
+
+    </div>
+    <div id="GDMap"></div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.4.1/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=F32Ab4e4mzf39XQ"></script>
+    <script src="https://cache.amap.com/lbs/static/es5.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+
+    <script type="text/javascript">
+        function assignMarker(loc1, loc2) {
+            m1 = new AMap.Marker({
+                map: map,
+                draggable: false,
+                animation: 'AMAP_ANIMATION_DROP',
+                position: new AMap.LngLat(loc1[0], loc1[1])
+            });
+            m2 = new AMap.Marker({
+                map: map,
+                draggable: false,
+                //                icon: 'https://a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png',
+                icon: new AMap.Icon({
+                    image: 'https://a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png',
+                    size: new AMap.Size(51, 71), //图标大小
+                    imageSize: new AMap.Size(30.6, 42)
+                }),
+
+                animation: 'AMAP_ANIMATION_DROP',
+                offset: new AMap.Pixel(-15.3, -38),
+                position: new AMap.LngLat(loc2[0], loc2[1])
+            });
+
+
+
+            m2circle = new AMap.Circle({
+                center: new AMap.LngLat(loc2[0], loc2[1]), // 圆心位置
+                radius: 500, //半径
+                strokeColor: "#F33", //线颜色
+                strokeOpacity: 0.4, //线透明度
+                strokeWeight: 3, //线粗细度
+                fillColor: "#ee2200", //填充颜色
+                fillOpacity: 0.1 //填充透明度
+            });
+
+        };
+
+        function computeDis() {
+            var p1 = m1.getPosition();
+            var p2 = m2.getPosition();
+            var textPos = p1.divideBy(2).add(p2.divideBy(2));
+            var distance = Math.round(p1.distance(p2) / 10) / 100;
+            var path = [p1, p2];
+            
+            console.log(line);
+            console.log(text);
+            
+            if (!line) {
+                line = new AMap.Polyline({
+                    map: map,
+                    strokeColor: '#80d8ff',
+                    isOutline: true,
+                    outlineColor: 'white',
+                    path: path
+                });
+            } else {
+                line.setPath(path);
+            }
+            if (!text) {
+                text = new AMap.Text({
+                    text: 'Distance between is ' + distance + 'km',
+                    position: textPos,
+                    map: map,
+                    style: {
+                        'background-color': 'rgba(0, 123, 255, 0.9)',
+                        'border-color': 'rgba(0, 123, 255, 0.9)',
+                        'border-width': '1px',
+                        'font-size': '20px',
+                        'font-weight': 'bold',
+                        'color': 'white'
+                    }
+                })
+            } else {
+                text.setText('Distance between is ' + distance + 'km')
+                text.setPosition(textPos)
+            }
+        }
+
+
+        function drawMarkers(loc1, loc2, lab1, lab2) {
+
+            assignMarker(loc1, loc2);
+            map.add(m1);
+            map.add(m2);
+
+            m1.setLabel({
+                offset: new AMap.Pixel(-8, 32), //设置文本标注偏移量
+                content: lab1, //设置文本标注内容
+                direction: 'right' //设置文本标注方位
+            });
+            m2.setLabel({
+                offset: new AMap.Pixel(-35, 10), //设置文本标注偏移量
+                content: '<div class="redlabel">'+lab2+'</div>', //设置文本标注内容
+                direction: 'right' //设置文本标注方位
+            });
+            map.add(m2circle);
+            map.setFitView();
+        };
+
+
+
+        function loadMainPanel(loadURL) {
+
+            $.getJSON(loadURL).done(function(data) {
+
+                staffdata = data.staffdata;
+
+                $('#staffListTbl').bootstrapTable('load', data.staffdata);
+                //                $('#reportDate').html("Data as" + " " + data.reportDate);
+                for (var i = 0; i < staffdata.length; i += 1) {
+                    drawMarkers(staffdata[i].currentLocation,
+                        staffdata[i].closestRiskLocation,
+                        staffdata[i].name + '<br>' + staffdata[i].id,
+                        staffdata[i].closestRiskAddress);
+
+                    markers.push(m1);
+                    markers.push(m2);
+                    circles.push(m2circle);
+
+                }
+                
+                map.setFitView();
+
+            });
+
+        };
+
+
+        $('#staffListTbl').on('click-row.bs.table', function(row, $element, field) {
+            var curloc = $element.currentLocation;
+            var riskloc = $element.closestRiskLocation;
+            var curlab = $element.name + '<br>' + $element.id;
+            var risklab = $element.closestRiskAddress;
+            
+            globalview = false;
+            
+            map.remove(m1);
+            map.remove(m2);
+            map.remove(m2circle);
+
+            map.remove(markers);
+            map.remove(circles);
+
+            drawMarkers(curloc, riskloc, curlab, risklab);
+            computeDis();
+
+            map.setFitView();
+
+
+        });
+
+
+        function showAll(){
+
+            if (globalview == false){
+            map.remove(m1);
+            map.remove(m2);
+            map.remove(m2circle);
+                
+            map.remove(text);
+            map.remove(line);
+            
+            line = null;
+            text = null;
+                
+            map.add(markers);
+            map.add(circles);
+            map.setFitView();              
+                
+            }
+
+
+        };
+
+        var m1 = null;
+        var m2 = null;
+        var m2circle = null;
+        var line = null;
+        var text = null;
+        var map = null;
+
+        var staffdata = null;
+
+        var markers = [];
+        var circles = [];
+        
+        var masterLink =null;
+        var globalview = true;
+
+
+        var map = new AMap.Map('GDMap', {
+            //            mapStyle: 'amap://styles/light',
+            resizeEnable: true,
+            zoom: 13,
+            lang: "zh_en" //可选值：en，zh_en, zh_cn
+
+        });
+
+        //        map.setMapStyle("amap://styles/light");
+
+
+        //        drawMarkers(pointInit1, pointInit2,'name1','test');
+
+        $(function() {
+
+            masterLink = './json/staff_info_explore.json';
+            // var masterlink='http:servermainlink?vpsel=All%20VPs;
+            loadMainPanel(masterLink);
+        });
+    </script>
+</body></html>
+
+
+
+
+
+
+
+
