@@ -1,4 +1,5 @@
-{
+var data = 
+ {
     "reportDate": "Feb 05, 2020",
 
     "basicInfo": [
@@ -8,7 +9,7 @@
         },
         {
             "item": "Name",
-            "value": "Tomas Wang"
+            "value": "Holy Smoke"
         },
         {
             "item": "Contact",
@@ -173,4 +174,4 @@
 
     ]
 
-}
+};
