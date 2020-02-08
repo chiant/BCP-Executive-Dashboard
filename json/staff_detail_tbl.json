@@ -1,0 +1,89 @@
+{
+    "basicInfo": {
+        "id": 81234588,
+        "name": "Holy Smoke",
+        "site": "TKH",
+        "lineManager": "Mike Zhou",
+        "VP": "Lucy Wang",
+        "SPOC": "Jane Zhao",
+        "Contact": "+86-13511112222",
+    },
+    "bizFunction": {
+        "lvl1": "Host",
+        "lv2": "Global Operations",
+        "lv3": "Consumer Service",
+        "lv4": "Cash & Cheques",
+        "lv5": "Domestic Cheque Processing"
+    },
+    "riskAssess": {
+        "reportDate": "Feb 05, 2020",
+        "currentRiskType": "No Risk",
+        "inQuara": "In Quarantine",
+        "accessRevoked": "No",
+        "revokeReason": "NA",
+        "joinSurveyToday": "Yes",
+        "lastJoinDate": "Feb 05, 2020",
+        "numOfNotJoinEver": 2,
+        "numOfLocChange": 5,
+        "numofGDTravel": 2,
+        "numofDometicTravel": 1
+    },
+    "workStatus": {
+        "curWorkStatus": "Work in Office (TKH)", //if not join survey, coded as Unknown
+        "numOfWFH": 5,
+        "numOfWorkOffice": 2,
+        "numOfLeaves": 4
+    },
+
+    "history": [
+        {
+            "date": "2020/2/5",
+            "joinSurvey": "Yes",
+            "workStatus": "Work in Office (TKH)",
+            "riskType": "No Risk",
+            "location": "南岗街广海路10号",
+            "geoLocation": [126.564543989, 43.8719883344]
+            "numOfRiskAddr500m": 3,
+            "listOfRiskAddr500m": ["天河新作", "地河新作", "人河新作"],
+            "geoRiskAddr500m": [[122.840776679, 45.6210862752], [121.840776679, 46.6210862752], [121.840776679, 45.6410862752]],
+            "closestRiskAddr": "天河新作",
+            "geoClosestRiskAddr": [122.840776679, 45.6210862752],
+            "distClosestRiskAddr": "<500m",
+
+        },
+        {
+            "date": "2020/2/4",
+            "joinSurvey": "No",
+            "workStatus": "Unknown",
+            "riskType": "No Risk",
+            "location": "南岗街广海路10号",
+            "geoLocation": [126.564543989, 43.8719883344]
+            "numOfRiskAddr500m": 3,
+            "listOfRiskAddr500m": ["天河新作", "地河新作", "人河新作"],
+            "geoRiskAddr500m": [[122.840776679, 45.6210862752], [121.840776679, 46.6210862752], [121.840776679, 45.6410862752]],
+            "closestRiskAddr": "天河新作",
+            "geoClosestRiskAddr": [122.840776679, 45.6210862752],
+            "distClosestRiskAddr": "<500m",
+
+        },        
+         {
+            "date": "2020/2/4",
+            "joinSurvey": "Yes",
+            "workStatus": "Working From Home",
+            "riskType": "No Risk",
+            "location": "南岗街广海路10号",
+            "geoLocation": [126.564543989, 43.8719883344]
+            "numOfRiskAddr500m": 3,
+            "listOfRiskAddr500m": ["天河新作", "地河新作", "人河新作"],
+            "geoRiskAddr500m": [[122.840776679, 45.6210862752], [121.840776679, 46.6210862752], [121.840776679, 45.6410862752]],
+            "closestRiskAddr": "天河新作",
+            "geoClosestRiskAddr": [122.840776679, 45.6210862752],
+            "distClosestRiskAddr": "<500m",
+
+        }             
+        
+    ]
+
+
+
+}
