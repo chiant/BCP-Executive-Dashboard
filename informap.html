@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+    <link rel="shortcut icon" href="./img/favicon.ico">
 
 
     <style>
@@ -67,7 +68,7 @@
         }
 
         #staffListTbl tr:hover {
-            background-color: yellow;
+            background-color: rgba(0, 0, 255, 0.2);
             cursor: pointer;
         }
         
@@ -114,7 +115,7 @@
 </head>
 
 <body>
-    <script src="js/staff_detail_tbl.js"></script>
+<!--    <script src="js/staff_detail_tbl.js"></script>-->
 
 
     <div id="infoPanel">
@@ -134,7 +135,7 @@
             <div class='m-auto'><button id="showAll" class="btn btn-info" type="submit" onclick="showAll()">Show All</button></div>
         </div>
         <div id="detailInfo">
-            <h3 class="text-center"><strong id="nameTitle">Tomas Wang</strong></h3>
+            <h3 class="text-center"><strong id="nameTitle"></strong></h3>
             <div style="float:left; width: 50%">
                 <h5 class="text-center"><strong>Personal Information</strong></h5>
                 <table class="table table-sm" id="basicInfo" data-toggle="table" data-show-header="false" data-height="150" >
@@ -338,11 +339,19 @@
 
             map.setFitView();
             
-            var detailAPIlink = './json/staff_detail_tbl.json';
+            
+                  $('#basicInfo').bootstrapTable('removeAll');
+                  $('#riskAssess').bootstrapTable('removeAll');
+                  $('#history').bootstrapTable('removeAll');
+
+            
+            var detailAPIlink = null;
+//            detailAPIlink = './json/staff_detail_tbl.json';
+            detailAPIlink = './json/'+staffid+'.json';
+
             // var detailAPIlink='http:servermainlink?id='+staffid;
            
             $.getJSON(detailAPIlink).done(function(data) {
-                
                 $('#detailInfo').show();
                 $('#nameTitle').html(staffname);
                 
@@ -388,7 +397,6 @@
         var markers = [];
         var circles = [];
 
-        var masterLink = null;
         var globalview = true;
 
 
@@ -396,24 +404,18 @@
             //            mapStyle: 'amap://styles/light',
             resizeEnable: true,
             zoom: 13,
-            lang: "zh_en" //可选值：en，zh_en, zh_cn
+            lang: "zh_en" 
 
         });
 
 
 
-        //        map.setMapStyle("amap://styles/light");
-
-
-        //        drawMarkers(pointInit1, pointInit2,'name1','test');
-
         $(function() {
-
+            var masterLink = null;
             masterLink = './json/staff_info_list.json';
             // var masterlink='http:servermainlink?vpsel=All%20VPs;
             loadMainPanel(masterLink);
             $('#detailInfo').hide();
-
 
         });
     </script>

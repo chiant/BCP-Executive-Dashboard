@@ -96,7 +96,7 @@
                         coordinateSystem: 'geo',
                         data: convertData([]),
                         symbolSize: function (val) {
-                            return Math.log(val[2] +10)*3;
+                            return Math.log(val[2] + 10) * 3;
                         },
                         label: {
                             normal: {
@@ -165,7 +165,7 @@
                             show: true,
                             position: "right",
                             color: "rgba(0,123,255, 1)",
-                            fontWeight:"bold"
+                            fontWeight: "bold"
                         },
                         itemStyle: {
                             normal: {
@@ -214,7 +214,7 @@
                             show: true,
                             position: "right",
                             color: "rgba(0,123,255, 1)",
-                            fontWeight:"bold"
+                            fontWeight: "bold"
                         },
                         itemStyle: {
                             normal: {
@@ -263,7 +263,7 @@
                             show: true,
                             position: "right",
                             color: "rgba(0,123,255, 1)",
-                            fontWeight:"bold"
+                            fontWeight: "bold"
                         },
                         itemStyle: {
                             normal: {
@@ -312,7 +312,7 @@
                         }
                     ]
                 };
-                
+
                 mainMapOptUpdate = {
                     series: [{
                         data: convertData(data.mainMap),
@@ -332,14 +332,18 @@
                 if (mainMapOptUpdate && typeof mainMapOptUpdate === "object") {
                     mainMapObj.setOption(mainMapOptUpdate);
                 };
-                
-                
-                
-                $('#notJoinTitle').html('Incomplete Survey Today'+' ('+data.notJoin.length+')');
-                $('#revokeConfirmTitle').html('Revoke to Be Confirmed'+' ('+data.revokeConfirm.length+')');
-                $('#newQuaraTitle').html('New Quarantine (Return to GD)'+' ('+data.newQuara.length+')');
-                $('#newRiskTblTitle').html('New Risk Case Indentified'+' ('+data.newRiskTbl.length+')');
-               
+
+
+                $('#notJoin').bootstrapTable('removeAll');
+                $('#revokeConfirm').bootstrapTable('removeAll');
+                $('#newQuara').bootstrapTable('removeAll');
+                $('#newRiskTbl').bootstrapTable('removeAll');
+
+                $('#notJoinTitle').html('Incomplete Survey Today' + ' (' + data.notJoin.length + ')');
+                $('#revokeConfirmTitle').html('Revoke to Be Confirmed' + ' (' + data.revokeConfirm.length + ')');
+                $('#newQuaraTitle').html('New Quarantine (Return to GD)' + ' (' + data.newQuara.length + ')');
+                $('#newRiskTblTitle').html('New Risk Case Indentified' + ' (' + data.newRiskTbl.length + ')');
+
                 $('#notJoin').bootstrapTable('load', data.notJoin);
                 $('#revokeConfirm').bootstrapTable('load', data.revokeConfirm);
                 $('#newQuara').bootstrapTable('load', data.newQuara);
@@ -359,7 +363,7 @@
 
         function loadMainMap(loadURL) {
             $.getJSON(loadURL).done(function (data) {
-                
+
                 mainMapOptUpdate = {
                     series: [{
                         data: convertData(data.mainMap),
@@ -374,38 +378,141 @@
 
         };
 
-        function selMap(mapFilter){
-            var vpSel=$('#vpSelected').html();
-            console.log(vpSel);
-            console.log(mapFilter);
+        function selMap(mapFilter) {
+            var vpSel = $('#vpSelected').html();
+
             var mapLink = './json/Map-All VPs-Risky Location.json';
-//          var maplink='http:servermaplink?vpsel='+vpSel+'&mapfilter='+mapFilter;
-            
+            //          var maplink='http:servermaplink?vpsel='+vpSel+'&mapfilter='+mapFilter;
+
             loadMainMap(mapLink);
-            
+
             $('#mapFilter').html(mapFilter);
         }
 
-        function selVP(vpSel){
+        function selVP(vpSel) {
             $('#vpSelected').html(vpSel);
-        
+
             var masterLink = './json/Stephen Zhou.json';
-//          var masterlink='http:servermainlink?vpsel='+vpSel;
-            loadMainPanel(masterLink);           
+            //          var masterlink='http:servermainlink?vpsel='+vpSel;
+            loadMainPanel(masterLink);
         }
+
+
+        var mapPageAPILink = null;
+        mapPageAPILink = 'informap.html';
+        //       Please replace this link with the map page API link
+        //        mapPageAPILink='http//:servermainlink';
+
+
+        var mainMapOpt = null;
+        var surveyStatOpt = null;
+        var workStatusOpt = null;
+        var riskFactorOpt = null;
+
+        var mainMapOptUpdate = null;
+        var surveyStatOptUpdate = null;
+        var workStatusOptUpdate = null;
+        var riskFactorOptUpdate = null;
 
         var mainMapObj = echarts.init(document.getElementById("mainMap"));
         var surveyStatObj = echarts.init(document.getElementById("surveyStat"));
         var workStatusObj = echarts.init(document.getElementById("workStatus"));
         var riskFactorObj = echarts.init(document.getElementById("riskFactor"));
-        var mainMapOpt = null;
-        var surveyStatOpt = null;
-        var workStatusOpt = null;
-        var riskFactorOpt = null;
-        var mainMapOptUpdate = null;
-        var surveyStatOptUpdate = null;
-        var workStatusOptUpdate = null;
-        var riskFactorOptUpdate = null;
+
+        mainMapObj.on('click', function (parmas) {
+
+            if (parmas.componentSubType == 'scatter') {
+                var citynm = parmas.name;
+                var vp = $('#vpSelected').html();
+                var mapfilter = $('#mapFilter').html();
+
+                var mapPageLink = null;
+                mapPageLink = mapPageAPILink + '?keyfield1=city&keyvalue1=' + citynm + '&kefield2=vp&keyvalue2=' + vp + 'keyfield3=mapfilter&keyvalue3=' + mapfilter;
+
+                window.open(mapPageLink);
+
+            }
+
+
+        });
+
+        surveyStatObj.on('click', function (parmas) {
+            if (parmas.componentSubType == 'bar') {
+                var surveyStatBar = parmas.name;
+                var vp = $('#vpSelected').html();
+
+                var mapPageLink = null;
+                mapPageLink = mapPageAPILink + '?keyfield1=surveyStatBar&keyvalue1=' + surveyStatBar + '&kefield2=vp&keyvalue2=' + vp;
+
+                window.open(mapPageLink);
+
+            }
+
+        });
+
+
+        workStatusObj.on('click', function (parmas) {
+            if (parmas.componentSubType == 'bar') {
+                var workStatusBar = parmas.name;
+                var vp = $('#vpSelected').html();
+
+                var mapPageLink = null;
+                mapPageLink = mapPageAPILink + '?keyfield1=workStatusBar&keyvalue1=' + workStatusBar + '&kefield2=vp&keyvalue2=' + vp;
+
+                window.open(mapPageLink);
+
+            }
+
+        });
+
+        riskFactorObj.on('click', function (parmas) {
+            if (parmas.componentSubType == 'bar') {
+                var riskFactorBar = parmas.name;
+                var vp = $('#vpSelected').html();
+
+                var mapPageLink = null;
+                mapPageLink = mapPageAPILink + '?keyfield1=riskFactorBar&keyvalue1=' + riskFactorBar + '&kefield2=vp&keyvalue2=' + vp;
+
+                window.open(mapPageLink);
+
+            }
+
+        });
+
+
+        $('#notJoin').on('click-row.bs.table', function (row, $element, field) {
+            var staffid = $element.id;
+            var mapPageLink = null;
+            mapPageLink = mapPageAPILink + '?keyfield1=staffid&keyvalue1=' + staffid;
+            window.open(mapPageLink);
+
+        });
+
+        $('#revokeConfirm').on('click-row.bs.table', function (row, $element, field) {
+            var staffid = $element.id;
+            var mapPageLink = null;
+            mapPageLink = mapPageAPILink + '?keyfield1=staffid&keyvalue1=' + staffid;
+            window.open(mapPageLink);
+
+        });
+
+        $('#newQuara').on('click-row.bs.table', function (row, $element, field) {
+            var staffid = $element.id;
+            var mapPageLink = null;
+            mapPageLink = mapPageAPILink + '?keyfield1=staffid&keyvalue1=' + staffid;
+            window.open(mapPageLink);
+
+        });
+        $('#newRiskTbl').on('click-row.bs.table', function (row, $element, field) {
+            var staffid = $element.id;
+            var mapPageLink = null;
+            mapPageLink = mapPageAPILink + '?keyfield1=staffid&keyvalue1=' + staffid;
+            window.open(mapPageLink);
+
+        });
+
+
+
 
         $(function () {
             graphOptInit();
@@ -422,12 +529,10 @@
             }
             if (riskFactorOpt && typeof riskFactorOpt === "object") {
                 riskFactorObj.setOption(riskFactorOpt, true);
-            }  
-            
+            }
+
             var masterLink = './json/All VPs.json';
-//          var masterlink='http:servermainlink?vpsel=All%20VPs;
+            //          var masterlink='http:servermainlink?vpsel=All%20VPs;
             loadMainPanel(masterLink);
 
         });
-
-

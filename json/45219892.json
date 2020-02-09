@@ -1,11 +1,10 @@
-var data = 
- {
+{
     "reportDate": "Feb 05, 2020",
 
     "basicInfo": [
         {
             "item": "ID",
-            "value": "81234588"
+            "value": "45219892"
         },
         {
             "item": "Name",
@@ -174,4 +173,4 @@ var data =
 
     ]
 
-};
+}
