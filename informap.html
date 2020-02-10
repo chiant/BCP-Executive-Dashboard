@@ -139,7 +139,7 @@
         <div class='row'>
             <div class='m-auto'>
                     <h6 id="notPlot" style='font-style:italic; margin-top: .5em'></h6>
-                    <button id="showAll" class="btn btn-info" type="submit" onclick="showAll()">Show All</button>
+                    <button id="showAll" class="btn btn-info"  onclick="showAll()">Show All</button>
             </div>
         </div>
         <div id="detailInfo">
@@ -341,12 +341,13 @@
                                 markers.push(m1);
                                 markers.push(m2);
                                 circles.push(m2circle);
+                            
 
                             }
                         $('#detailInfo').hide();
                         $('#notPlot').hide();
+                                    
 
-    
                     }
                     else {
                         var plotdata=staffdata[0];
@@ -369,7 +370,7 @@
             
             
              function showStaffDetails(curloc,riskloc,staffid,staffname,curlab,risklab){
-                        lobalview = false;
+                        globalview = false;
                  
                         if (m1!=null) {
                              map.remove(m1);
@@ -429,6 +430,7 @@
 
 
             function showAll() {
+                
 
                 if (globalview == false) {
                     map.remove(m1);
@@ -463,7 +465,7 @@
             var circles = [];
 
             var globalview = true;
-
+            
 
             var map = new AMap.Map('GDMap', {
                 //            mapStyle: 'amap://styles/light',
