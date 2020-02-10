@@ -413,6 +413,8 @@
         var surveyStatOptUpdate = null;
         var workStatusOptUpdate = null;
         var riskFactorOptUpdate = null;
+    
+        var maxPointPlot = 100;
 
         var mainMapObj = echarts.init(document.getElementById("mainMap"));
         var surveyStatObj = echarts.init(document.getElementById("surveyStat"));
@@ -423,13 +425,18 @@
 
             if (parmas.componentSubType == 'scatter') {
                 var citynm = parmas.name;
+                var nstaff=parmas.value[2];
                 var vp = $('#vpSelected').html();
                 var mapfilter = $('#mapFilter').html();
-
+                
+//                if (nstaff<=maxPointPlot){
                 var mapPageLink = null;
                 mapPageLink = mapPageAPILink + '?keyfield1=city&keyvalue1=' + citynm + '&kefield2=vp&keyvalue2=' + vp + 'keyfield3=mapfilter&keyvalue3=' + mapfilter;
 
                 window.open(mapPageLink);
+//                } else {
+//                    alert("现在暂不支持"+maxPointPlot+"个点以上的坐标绘图");
+//                }
 
             }
 

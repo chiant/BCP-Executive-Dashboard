@@ -33,15 +33,18 @@
             width: 40%;
         }
 
-        h2,h4,h5 {
+        h2,
+        h4,
+        h5 {
             text-align: center;
             margin-top: 0.4em;
             margin-bottom: 0.4em;
             padding: 0;
 
         }
+
         h3 {
-           margin-top: 0.5em;
+            margin-top: 0.5em;
             margin-bottom: 0;
             padding: 0;
         }
@@ -71,7 +74,7 @@
             background-color: rgba(0, 0, 255, 0.2);
             cursor: pointer;
         }
-        
+
 
         td {
             font-family: "Arial Narrow";
@@ -111,17 +114,19 @@
         #showAll {
             margin: .6em;
         }
+        
     </style>
 </head>
 
 <body>
-<!--    <script src="js/staff_detail_tbl.js"></script>-->
+    <!--    <script src="js/staff_detail_tbl.js"></script>-->
 
 
-    <div id="infoPanel">
+    <div id="infoPanel" style="float:left; width: 40%">
         <h2><strong>Staff Information Explorer</strong></h2>
+        <h5 id="staffselnum"><strong>Staff Selected:</strong></h5>
 
-        <table class="table table-sm" id="staffListTbl" data-toggle="table" data-height="200">
+        <table class="table table-sm" id="staffListTbl" data-toggle="table" data-height="190">
             <thead class="thead-dark">
                 <tr>
                     <th data-field="id" data-width="5" data-width-unit="%" data-sortable="true">ID</th>
@@ -132,13 +137,16 @@
             </thead>
         </table>
         <div class='row'>
-            <div class='m-auto'><button id="showAll" class="btn btn-info" type="submit" onclick="showAll()">Show All</button></div>
+            <div class='m-auto'>
+                    <h6 id="notPlot" style='font-style:italic; margin-top: .5em'></h6>
+                    <button id="showAll" class="btn btn-info" type="submit" onclick="showAll()">Show All</button>
+            </div>
         </div>
         <div id="detailInfo">
             <h3 class="text-center"><strong id="nameTitle"></strong></h3>
-            <div style="float:left; width: 50%">
+            <div style="float:left; width: 50%; margin-bottom: .6em;">
                 <h5 class="text-center"><strong>Personal Information</strong></h5>
-                <table class="table table-sm" id="basicInfo" data-toggle="table" data-show-header="false" data-height="150" >
+                <table class="table table-sm" id="basicInfo" data-toggle="table" data-show-header="false" data-height="290">
                     <thead>
                         <tr>
                             <th data-field="item" data-width="40" data-width-unit="%" data-sortable="true">item</th>
@@ -147,9 +155,9 @@
                     </thead>
                 </table>
             </div>
-            <div style="float:right; width: 50%">
+            <div style="float:right; width: 50%; margin-bottom: .6em;">
                 <h5 class="text-center"><strong>Risk Assessment</strong></h5>
-                <table class="table table-sm" id="riskAssess" data-toggle="table" data-show-header="false" data-height="150">
+                <table class="table table-sm" id="riskAssess" data-toggle="table" data-show-header="false" data-height="290">
                     <thead>
                         <tr>
                             <th data-field="item" data-width="70" data-width-unit="%" data-sortable="true">item</th>
@@ -159,272 +167,327 @@
                 </table>
 
             </div>
-            <div style="float:right; width: 100%">
-                <h5 class="text-center"><strong>Historical Tracking</strong></h5>
-                <table class="table table-sm" id="history" data-toggle="table"  data-height="150">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th data-field="date" data-width="5" data-width-unit="%" data-sortable="true">Date</th>
-                            <th data-field="joinSurvey" data-width="5" data-width-unit="%" data-sortable="true">Join Survey</th>
-                            <th data-field="workStatus" data-width="10" data-width-unit="%" data-sortable="true">Work Status</th>
-                            <th data-field="riskType" data-width="5" data-width-unit="%" data-sortable="true">Risk Type</th>
-                            <th data-field="location" data-width="10" data-width-unit="%" data-sortable="true">Location</th>
-                            <th data-field="numOfRiskAddr500m" data-width="5" data-width-unit="%" data-sortable="true"># of risky spots within 500m</th>
-                            <th data-field="listOfRiskAddr500m" data-width="10" data-width-unit="%" data-sortable="true">List of risky spots within 500m</th>
-                            <th data-field="closestRiskAddr" data-width="10" data-width-unit="%" data-sortable="true">Closest risky spot</th>
-                            <th data-field="distClosestRiskAddr" data-width="10" data-width-unit="%" data-sortable="true">Distance</th>
-                        </tr>
-                    </thead>
-                </table>
 
+
+
+            <div class="row" >
+                <button type="button" class="btn btn-primary btn-lg m-auto" data-toggle="modal" data-target="#modalTable">
+                    Show Travel History
+                </button>
             </div>
+            <div id="modalTable" class="modal fade bd-example-modal-xl"  tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content" >
+                        <div class="modal-header">
+                            <h5 id="historyTitle" class="modal-title">History Tracking</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <table id="history" data-toggle="table" data-height="280">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th data-field="date" data-width="5" data-width-unit="%">Date</th>
+                                        <th data-field="joinSurvey" data-width="5" data-width-unit="%" >Join Survey</th>
+                                        <th data-field="workStatus" data-width="10" data-width-unit="%">Work Status</th>
+                                        <th data-field="riskType" data-width="5" data-width-unit="%">Risk Type</th>
+                                        <th data-field="location" data-width="20" data-width-unit="%" >Location</th>
+                                        <th data-field="numOfRiskAddr500m" data-width="5" data-width-unit="%" ># of risky spots within 500m</th>
+                                        <th data-field="listOfRiskAddr500m" data-width="10" data-width-unit="%" >List of risky spots within 500m</th>
+                                        <th data-field="closestRiskAddr" data-width="10" data-width-unit="%" >Closest risky spot</th>
+                                        <th data-field="distClosestRiskAddr" data-width="10" data-width-unit="%" >Distance</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-
     </div>
-    <div id="GDMap"></div>
+        <div id="GDMap" style="float:right; width: 60%"></div>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.4.1/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=F32Ab4e4mzf39XQ"></script>
-    <script src="https://cache.amap.com/lbs/static/es5.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.4.1/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=F32Ab4e4mzf39XQ"></script>
+        <script src="https://cache.amap.com/lbs/static/es5.min.js"></script>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
-
-
-    <script type="text/javascript">
-        function assignMarker(loc1, loc2) {
-            m1 = new AMap.Marker({
-                map: map,
-                draggable: false,
-                animation: 'AMAP_ANIMATION_DROP',
-                position: new AMap.LngLat(loc1[0], loc1[1])
-            });
-            m2 = new AMap.Marker({
-                map: map,
-                draggable: false,
-                //                icon: 'https://a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png',
-                icon: new AMap.Icon({
-                    image: 'https://a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png',
-                    size: new AMap.Size(51, 71), //图标大小
-                    imageSize: new AMap.Size(30.6, 42)
-                }),
-
-                animation: 'AMAP_ANIMATION_DROP',
-                offset: new AMap.Pixel(-15.3, -38),
-                position: new AMap.LngLat(loc2[0], loc2[1])
-            });
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
 
 
-
-            m2circle = new AMap.Circle({
-                center: new AMap.LngLat(loc2[0], loc2[1]), // 圆心位置
-                radius: 500, //半径
-                strokeColor: "#F33", //线颜色
-                strokeOpacity: 0.4, //线透明度
-                strokeWeight: 3, //线粗细度
-                fillColor: "#ee2200", //填充颜色
-                fillOpacity: 0.1 //填充透明度
-            });
-
-        };
-
-        function computeDis() {
-            var p1 = m1.getPosition();
-            var p2 = m2.getPosition();
-            var textPos = p1.divideBy(2).add(p2.divideBy(2));
-            var distance = Math.round(p1.distance(p2) / 10) / 100;
-            var path = [p1, p2];
-
-
-            if (!line) {
-                line = new AMap.Polyline({
+        <script type="text/javascript">
+            function assignMarker(loc1, loc2) {
+                m1 = new AMap.Marker({
                     map: map,
-                    strokeColor: '#80d8ff',
-                    isOutline: true,
-                    outlineColor: 'white',
-                    path: path
+                    draggable: false,
+                    animation: 'AMAP_ANIMATION_DROP',
+                    position: new AMap.LngLat(loc1[0], loc1[1])
                 });
-            } else {
-                line.setPath(path);
-            }
-            if (!text) {
-                text = new AMap.Text({
-                    text: 'Distance between is ' + distance + 'km',
-                    position: textPos,
+                m2 = new AMap.Marker({
                     map: map,
-                    style: {
-                        'background-color': 'rgba(0, 123, 255, 0.9)',
-                        'border-color': 'rgba(0, 123, 255, 0.9)',
-                        'border-width': '1px',
-                        'font-size': '20px',
-                        'font-weight': 'bold',
-                        'color': 'white'
-                    }
-                })
-            } else {
-                text.setText('Distance between is ' + distance + 'km')
-                text.setPosition(textPos)
+                    draggable: false,
+                    //                icon: 'https://a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png',
+                    icon: new AMap.Icon({
+                        image: 'https://a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-red.png',
+                        size: new AMap.Size(51, 71), //图标大小
+                        imageSize: new AMap.Size(30.6, 42)
+                    }),
+
+                    animation: 'AMAP_ANIMATION_DROP',
+                    offset: new AMap.Pixel(-15.3, -38),
+                    position: new AMap.LngLat(loc2[0], loc2[1])
+                });
+
+
+
+                m2circle = new AMap.Circle({
+                    center: new AMap.LngLat(loc2[0], loc2[1]), // 圆心位置
+                    radius: 500, //半径
+                    strokeColor: "#F33", //线颜色
+                    strokeOpacity: 0.4, //线透明度
+                    strokeWeight: 3, //线粗细度
+                    fillColor: "#ee2200", //填充颜色
+                    fillOpacity: 0.1 //填充透明度
+                });
+
+            };
+
+            function computeDis() {
+                var p1 = m1.getPosition();
+                var p2 = m2.getPosition();
+                var textPos = p1.divideBy(2).add(p2.divideBy(2));
+                var distance = Math.round(p1.distance(p2) / 10) / 100;
+                var path = [p1, p2];
+
+
+                if (!line) {
+                    line = new AMap.Polyline({
+                        map: map,
+                        strokeColor: '#80d8ff',
+                        isOutline: true,
+                        outlineColor: 'white',
+                        path: path
+                    });
+                } else {
+                    line.setPath(path);
+                }
+                if (!text) {
+                    text = new AMap.Text({
+                        text: 'Distance between is ' + distance + 'km',
+                        position: textPos,
+                        map: map,
+                        style: {
+                            'background-color': 'rgba(0, 123, 255, 0.9)',
+                            'border-color': 'rgba(0, 123, 255, 0.9)',
+                            'border-width': '1px',
+                            'font-size': '20px',
+                            'font-weight': 'bold',
+                            'color': 'white'
+                        }
+                    })
+                } else {
+                    text.setText('Distance between is ' + distance + 'km')
+                    text.setPosition(textPos)
+                }
             }
-        }
 
 
-        function drawMarkers(loc1, loc2, lab1, lab2) {
+            function drawMarkers(loc1, loc2, lab1, lab2) {
 
-            assignMarker(loc1, loc2);
-            map.add(m1);
-            map.add(m2);
+                assignMarker(loc1, loc2);
+                map.add(m1);
+                map.add(m2);
 
-            //            m1.setLabel({
-            //                offset: new AMap.Pixel(-8, 32), //设置文本标注偏移量
-            //                content: lab1, //设置文本标注内容
-            //                direction: 'right' //设置文本标注方位
-            //            });
-            m2.setLabel({
-                offset: new AMap.Pixel(-35, 10), //设置文本标注偏移量
-                content: '<div class="redlabel">' + lab2 + '</div>', //设置文本标注内容
-                direction: 'right' //设置文本标注方位
+                //            m1.setLabel({
+                //                offset: new AMap.Pixel(-8, 32), //设置文本标注偏移量
+                //                content: lab1, //设置文本标注内容
+                //                direction: 'right' //设置文本标注方位
+                //            });
+                m2.setLabel({
+                    offset: new AMap.Pixel(-35, 10), //设置文本标注偏移量
+                    content: '<div class="redlabel">' + lab2 + '</div>', //设置文本标注内容
+                    direction: 'right' //设置文本标注方位
+                });
+                map.add(m2circle);
+                map.setFitView();
+            };
+
+
+
+            function loadMainPanel(loadURL) {
+
+                $.getJSON(loadURL).done(function(data) {
+
+                    staffdata = data.staffdata;
+                    staffnum=staffdata.length;
+                    $('#staffselnum').html('staff selected: '+staffnum);
+
+                    $('#staffListTbl').bootstrapTable('load', data.staffdata);
+                    //                $('#reportDate').html("Data as" + " " + data.reportDate);
+                    
+                    if (staffnum<=maxPlotMarkers){
+                        
+                        for (var i = 0; i < staffdata.length; i += 1) {
+                            drawMarkers(staffdata[i].currentLocation,
+                                staffdata[i].closestRiskLocation,
+                                staffdata[i].name + '<br>' + staffdata[i].id,
+                                staffdata[i].closestRiskAddress);
+
+                                markers.push(m1);
+                                markers.push(m2);
+                                circles.push(m2circle);
+
+                            }
+                        $('#detailInfo').hide();
+                        $('#notPlot').hide();
+
+    
+                    }
+                    else {
+                        var plotdata=staffdata[0];
+                        var curloc = plotdata.currentLocation;
+                        var riskloc = plotdata.closestRiskLocation;
+                        var staffid = plotdata.id;
+                        var staffname = plotdata.name;
+                        var curlab = plotdata.name + '<br>' + plotdata.id;
+                        var risklab = plotdata.closestRiskAddress;
+                        showStaffDetails(curloc,riskloc,staffid,staffname,curlab,risklab); 
+                        $('#showAll').hide();
+                        $('#notPlot').html("Plotting "+maxPlotMarkers+"++ locations on map is currently not supported due to performance constrain");
+                    }
+
+                    map.setFitView();
+
+                });
+
+            };
+            
+            
+             function showStaffDetails(curloc,riskloc,staffid,staffname,curlab,risklab){
+                        lobalview = false;
+                 
+                        if (m1!=null) {
+                             map.remove(m1);
+                            map.remove(m2);
+                            map.remove(m2circle);
+
+                            map.remove(markers);
+                            map.remove(circles);                       
+                        }
+
+
+                        drawMarkers(curloc, riskloc, curlab, risklab);
+                        computeDis();
+
+                        map.setFitView();
+
+
+                        $('#basicInfo').bootstrapTable('removeAll');
+                        $('#riskAssess').bootstrapTable('removeAll');
+                        $('#history').bootstrapTable('removeAll');
+
+
+                        var detailAPIlink = null;
+                        //detailAPIlink = './json/staff_detail_tbl.json';
+                        detailAPIlink = './json/' + staffid + '.json';
+
+                        //var detailAPIlink='http:servermainlink?id='+staffid;
+
+                        $.getJSON(detailAPIlink).done(function(data) {
+                            $('#detailInfo').show();
+                            $('#nameTitle').html(staffname);
+
+                            $('#basicInfo').bootstrapTable('load', data.basicInfo);
+                            $('#riskAssess').bootstrapTable('load', data.riskAssess);
+                            $('#history').bootstrapTable('load', data.history);
+
+                        });   
+                };
+
+
+
+            $('#staffListTbl').on('click-row.bs.table', function(row, $element, field) {
+                var curloc = $element.currentLocation;
+                var riskloc = $element.closestRiskLocation;
+                var staffid = $element.id;
+                var staffname = $element.name;
+                var curlab = $element.name + '<br>' + $element.id;
+                var risklab = $element.closestRiskAddress;
+                showStaffDetails(curloc,riskloc,staffid,staffname,curlab,risklab);
             });
-            map.add(m2circle);
-            map.setFitView();
-        };
+
+            $(function() {
+                $('#modalTable').on('shown.bs.modal', function() {
+                    $('#history').bootstrapTable('resetView')
+                })
+            })
 
 
+            function showAll() {
 
-        function loadMainPanel(loadURL) {
+                if (globalview == false) {
+                    map.remove(m1);
+                    map.remove(m2);
+                    map.remove(m2circle);
 
-            $.getJSON(loadURL).done(function(data) {
+                    map.remove(text);
+                    map.remove(line);
 
-                staffdata = data.staffdata;
+                    line = null;
+                    text = null;
 
-                $('#staffListTbl').bootstrapTable('load', data.staffdata);
-                //                $('#reportDate').html("Data as" + " " + data.reportDate);
-                for (var i = 0; i < staffdata.length; i += 1) {
-                    drawMarkers(staffdata[i].currentLocation,
-                        staffdata[i].closestRiskLocation,
-                        staffdata[i].name + '<br>' + staffdata[i].id,
-                        staffdata[i].closestRiskAddress);
-
-                    markers.push(m1);
-                    markers.push(m2);
-                    circles.push(m2circle);
-
+                    map.add(markers);
+                    map.add(circles);
+                    map.setFitView();
+                    $('#detailInfo').hide();
                 }
 
-                map.setFitView();
+
+            };
+
+            var m1 = null;
+            var m2 = null;
+            var m2circle = null;
+            var line = null;
+            var text = null;
+            var map = null;
+
+            var staffdata = null;
+
+            var markers = [];
+            var circles = [];
+
+            var globalview = true;
+
+
+            var map = new AMap.Map('GDMap', {
+                //            mapStyle: 'amap://styles/light',
+                resizeEnable: true,
+                zoom: 13,
+                lang: "zh_en"
+
+            });
+            
+            
+            var staffnum = null;
+            var maxPlotMarkers = 200;
+
+
+
+            $(function() {
+                var masterLink = null;
+                masterLink = './json/staff_info_list.json';
+                // var masterlink='http:servermainlink?vpsel=All%20VPs;
+                loadMainPanel(masterLink);
 
             });
 
-        };
+        </script>
+</body>
 
-
-        $('#staffListTbl').on('click-row.bs.table', function(row, $element, field) {
-            var curloc = $element.currentLocation;
-            var riskloc = $element.closestRiskLocation;
-            var staffid = $element.id;
-            var staffname=$element.name;
-            var curlab = $element.name + '<br>' + $element.id;
-            var risklab = $element.closestRiskAddress;
-
-            globalview = false;
-
-            map.remove(m1);
-            map.remove(m2);
-            map.remove(m2circle);
-
-            map.remove(markers);
-            map.remove(circles);
-
-            drawMarkers(curloc, riskloc, curlab, risklab);
-            computeDis();
-
-            map.setFitView();
-            
-            
-                  $('#basicInfo').bootstrapTable('removeAll');
-                  $('#riskAssess').bootstrapTable('removeAll');
-                  $('#history').bootstrapTable('removeAll');
-
-            
-            var detailAPIlink = null;
-//            detailAPIlink = './json/staff_detail_tbl.json';
-            detailAPIlink = './json/'+staffid+'.json';
-
-            // var detailAPIlink='http:servermainlink?id='+staffid;
-           
-            $.getJSON(detailAPIlink).done(function(data) {
-                $('#detailInfo').show();
-                $('#nameTitle').html(staffname);
-                
-                $('#basicInfo').bootstrapTable('load', data.basicInfo);
-                $('#riskAssess').bootstrapTable('load', data.riskAssess);
-                $('#history').bootstrapTable('load', data.history);       
-                
-            });
-        });
-
-
-        function showAll() {
-
-            if (globalview == false) {
-                map.remove(m1);
-                map.remove(m2);
-                map.remove(m2circle);
-
-                map.remove(text);
-                map.remove(line);
-
-                line = null;
-                text = null;
-
-                map.add(markers);
-                map.add(circles);
-                map.setFitView();
-                $('#detailInfo').hide();
-            }
-
-
-        };
-
-        var m1 = null;
-        var m2 = null;
-        var m2circle = null;
-        var line = null;
-        var text = null;
-        var map = null;
-
-        var staffdata = null;
-
-        var markers = [];
-        var circles = [];
-
-        var globalview = true;
-
-
-        var map = new AMap.Map('GDMap', {
-            //            mapStyle: 'amap://styles/light',
-            resizeEnable: true,
-            zoom: 13,
-            lang: "zh_en" 
-
-        });
-
-
-
-        $(function() {
-            var masterLink = null;
-            masterLink = './json/staff_info_list.json';
-            // var masterlink='http:servermainlink?vpsel=All%20VPs;
-            loadMainPanel(masterLink);
-            $('#detailInfo').hide();
-
-        });
-    </script>
-</body></html>
-
-
-
-
-
-
-
-
+</html>
