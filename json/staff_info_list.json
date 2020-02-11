@@ -10,6 +10,7 @@
             "closestRiskLocation": [113.33288879467501, 23.135579837441266],
             "currentAddress": "太古汇",
             "closestRiskAddress": "天河新作",
+            "dist2RiskAddr": 900,
             "risktype": "Risky Location",
             "vp": "Stephen"
     },
@@ -23,6 +24,7 @@
             "closestRiskLocation":  [113.53884781192102, 23.0940374684139],  
             "currentAddress": "南岗街广海路10号",
             "closestRiskAddress": "南岗街广海路亨元花园",
+            "dist2RiskAddr": 1900,
             "risktype": "Been in Hubei",
             "vp": "John"
     },
@@ -36,6 +38,7 @@
             "closestRiskLocation": [113.39346172248892, 23.12532548150483],  
             "currentAddress": "车陂街美好居附近",
             "closestRiskAddress": "车陂街美好居",
+            "dist2RiskAddr": 199900,
             "risktype": "Close Contact",
             "vp": "Tom"
     },
@@ -49,6 +52,7 @@
             "closestRiskLocation":  [113.5403997077169, 23.331014260322355],  
             "currentAddress": "龙湖街11号",
             "closestRiskAddress": "龙湖街万科幸福誉",            
+            "dist2RiskAddr": 19900,
             "risktype": "Travel Today",
             "vp": "Jenny"
     },
@@ -62,6 +66,7 @@
             "closestRiskLocation": [113.42932278159738, 23.114368452666604],  
             "currentAddress": "金世花园",
             "closestRiskAddress": "金碧世纪花园",
+            "dist2RiskAddr": 100,
             "risktype": "in Hubei Now",
             "vp": "Walt"
     },
@@ -76,7 +81,8 @@
             "closestRiskLocation": [113.23213499295431, 23.402198591510476],  
             "currentAddress": "太古花城街道南航花园汇",
             "closestRiskAddress": "花城街道南航花园",
-            "risktype": "Been in Hubei",
+             "dist2RiskAddr": 200,
+           "risktype": "Been in Hubei",
             "vp": "John"
     },
         {
@@ -89,6 +95,7 @@
             "closestRiskLocation": [113.45462163384762, 23.107571900301146],  
             "currentAddress": "大沙街丰北路君城",
             "closestRiskAddress": "大沙街丰乐北路君和名城",            
+            "dist2RiskAddr": 500000,
             "risktype": "Close Contact",
             "vp": "Tom"
     },
@@ -102,7 +109,8 @@
             "closestRiskLocation":  [113.36637342175196, 23.12347989875261],  
             "currentAddress": "太古汇",
             "closestRiskAddress": "天河新作",
-            "risktype": "Travel Today",
+             "dist2RiskAddr": 100,
+           "risktype": "Travel Today",
             "vp": "Jenny"
     },
         {
@@ -115,7 +123,8 @@
             "closestRiskLocation": [113.33288879467501, 23.135579837441266],  
             "currentAddress": "太海景花园古汇",
             "closestRiskAddress": "海景花园",
-            "risktype": "in Hubei Now",
+              "dist2RiskAddr": 5000000,
+           "risktype": "in Hubei Now",
             "vp": "Walt"
     },
         {
@@ -128,6 +137,7 @@
             "closestRiskLocation":  [113.34676033424932, 23.11619312588881],  
             "currentAddress": "太古猎德街道珠光衘景汇",
             "closestRiskAddress": "猎德街道珠光衘景",
+              "dist2RiskAddr": 9000,
             "risktype": "Risky Location",
             "vp": "Angel"
     }

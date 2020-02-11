@@ -41,12 +41,12 @@
         }
         
         tr:hover {
-            background-color: rgba(0, 0, 255, 0.2);
+            background-color: rgba(0, 0, 255, 0.1);
             cursor: pointer;
         }
 
         .map-panel-gap {
-            margin-bottom: 1.5em;
+            margin-bottom: 0em;
         }
 
         .surveyStat-height {
@@ -59,6 +59,21 @@
 
         .riskFactor-height {
             height: 35%;
+        }
+        
+        .kpi:hover{
+            background-color: rgba(0,123,255, 1);
+            color: white;
+            cursor: pointer;
+        }
+        
+                
+                
+        #searchDiv{
+
+            position: relative;
+            top:-4em;
+
         }
 
     </style>
@@ -129,7 +144,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row no-gutters map-panel-gap">
-                                <div class="col-md-3">
+                                <div class="col-md-3 kpi" id='KPI1 Infection'>
                                     <div>
                                         <h1><strong id="confirmedInfection"></strong></h1>
                                     </div>
@@ -137,7 +152,7 @@
                                         <p class="small">Confirmed<br>Infection</p>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-3 kpi" id='KPI2 UnderRisk'>
                                     <div>
                                         <h1><strong id="staffUnderRisk"></strong></h1>
                                     </div>
@@ -145,7 +160,7 @@
                                         <p class="small">Staff<br>Under Risk</p>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-3 kpi" id='KPI3 AccessRevoked'>
                                     <div>
                                         <h1><strong id="accessRevoked"></strong></h1>
                                     </div>
@@ -153,7 +168,7 @@
                                         <p class="small">Access<br>Revoked</p>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-3 kpi" id='KPI4 UnderQuarantine'>
                                     <div>
                                         <h1><strong id="underQuarantine"></strong></h1>
                                     </div>
@@ -185,6 +200,10 @@
                                             <i class="fas fa-cogs fa-sm fa-fw mr-2 small text-gray-400"></i>
                                             Been in Hubei
                                         </a>
+                                        <a id="Going To Hubei" class="dropdown-item" href="javascript:void(0)" onclick="selMap(this.id)">
+                                            <i class="fas fa-cogs fa-sm fa-fw mr-2 small text-gray-400"></i>
+                                            Going To Hubei
+                                        </a>
                                         <a id="Close Contact" class="dropdown-item" href="javascript:void(0)" onclick="selMap(this.id)">
                                             <i class="fas fa-cogs fa-sm fa-fw mr-2 small text-gray-400"></i>
                                             Close Contact
@@ -192,6 +211,10 @@
                                         <a id="Travel Today" class="dropdown-item" href="javascript:void(0)" onclick="selMap(this.id)">
                                             <i class="fas fa-list fa-sm fa-fw mr-2 small text-gray-400"></i>
                                             Travel Today
+                                        </a>
+                                        <a id="Risky Location" class="dropdown-item" href="javascript:void(0)" onclick="selMap(this.id)">
+                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 small text-gray-400"></i>
+                                            Return to GD
                                         </a>
                                         <a id="Risky Location" class="dropdown-item" href="javascript:void(0)" onclick="selMap(this.id)">
                                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 small text-gray-400"></i>
@@ -204,9 +227,17 @@
 
 
 
-                            <div id="mainMap" style="height: 120%"></div>
-
-                        </div>
+                                <div id="mainMap" style="height: 150%"></div>
+                         </div>
+                              
+                              <div id="searchDiv" class="input-group input-group-sm mb-3" style="margin: 0; padding: 0">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-sm">Search Staff</span>
+                                  </div>
+                                  <input id="inputid" type="text" class="form-control"  placeholder="input staff id" aria-describedby="inputGroup-sizing-sm">
+                                  <button type="submit" id="searchbtn" class="col-md-2 btn-primary btn-sm" style=" padding-left: 0.1em; padding-right: 0.1em; padding-bottom: 0; padding-top: 0; margin-left:0;">submit</button>
+                            </div>
+                                
                     </div>
 
                     <div class="card mb-4 box-shadow">

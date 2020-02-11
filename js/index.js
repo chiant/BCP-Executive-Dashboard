@@ -27,6 +27,14 @@
                     }
 
                 },
+                
+                grid: {
+                    left: '0%',
+                    right: '0%',
+                    top: '0%',
+                    bottom: '0%',
+                    containLabel: false
+                },            
                 tooltip: {
                     trigger: 'item',
                     formatter: function (params) {
@@ -170,8 +178,11 @@
                         itemStyle: {
                             normal: {
                                 color: 'rgba(0,123,255, .6)'
-                            }
-                        },
+                            },
+                              emphasis: {
+                                color: 'rgba(0,123,255, 1)'
+                           }
+                    },
                         data: []
                 }
             ]
@@ -219,7 +230,10 @@
                         itemStyle: {
                             normal: {
                                 color: 'rgba(0,123,255, .6)'
-                            }
+                            },
+                             emphasis: {
+                                color: 'rgba(0,123,255, 1)'
+                           }
                         },
                         data: []
                 }
@@ -268,7 +282,10 @@
                         itemStyle: {
                             normal: {
                                 color: 'rgba(0,123,255, .6)'
-                            }
+                            },
+                             emphasis: {
+                                color: 'rgba(0,123,255, 1)'
+                           }
                         },
                         data: []
                 }
@@ -421,6 +438,22 @@
         var workStatusObj = echarts.init(document.getElementById("workStatus"));
         var riskFactorObj = echarts.init(document.getElementById("riskFactor"));
 
+
+        $('.kpi').click(function () {
+            var kpicontent = this.id;
+            var vp = $('#vpSelected').html();
+            var mapPageLink = null;
+            mapPageLink = mapPageAPILink + '?keyfield1=KPI&keyvalue1=' + kpicontent + '&keyfield2=vp&keyvalue2=' + vp;
+            window.open(mapPageLink);
+        });
+
+        $('#searchbtn').click(function () {
+            var mapPageLink = null;
+            mapPageLink = mapPageAPILink + '?keyfield1=staffid&keyvalue1=' + $("#inputid").val();
+            window.open(mapPageLink);
+        });
+
+
         mainMapObj.on('click', function (parmas) {
 
             if (parmas.componentSubType == 'scatter') {
@@ -429,14 +462,10 @@
                 var vp = $('#vpSelected').html();
                 var mapfilter = $('#mapFilter').html();
                 
-//                if (nstaff<=maxPointPlot){
                 var mapPageLink = null;
-                mapPageLink = mapPageAPILink + '?keyfield1=city&keyvalue1=' + citynm + '&kefield2=vp&keyvalue2=' + vp + 'keyfield3=mapfilter&keyvalue3=' + mapfilter;
+                mapPageLink = mapPageAPILink + '?keyfield1=city&keyvalue1=' + citynm + '&keyfield2=vp&keyvalue2=' + vp + 'keyfield3=mapfilter&keyvalue3=' + mapfilter;
 
                 window.open(mapPageLink);
-//                } else {
-//                    alert("现在暂不支持"+maxPointPlot+"个点以上的坐标绘图");
-//                }
 
             }
 
@@ -449,7 +478,7 @@
                 var vp = $('#vpSelected').html();
 
                 var mapPageLink = null;
-                mapPageLink = mapPageAPILink + '?keyfield1=surveyStatBar&keyvalue1=' + surveyStatBar + '&kefield2=vp&keyvalue2=' + vp;
+                mapPageLink = mapPageAPILink + '?keyfield1=surveyStatBar&keyvalue1=' + surveyStatBar + '&keyfield2=vp&keyvalue2=' + vp;
 
                 window.open(mapPageLink);
 
@@ -464,7 +493,7 @@
                 var vp = $('#vpSelected').html();
 
                 var mapPageLink = null;
-                mapPageLink = mapPageAPILink + '?keyfield1=workStatusBar&keyvalue1=' + workStatusBar + '&kefield2=vp&keyvalue2=' + vp;
+                mapPageLink = mapPageAPILink + '?keyfield1=workStatusBar&keyvalue1=' + workStatusBar + '&keyfield2=vp&keyvalue2=' + vp;
 
                 window.open(mapPageLink);
 
@@ -478,13 +507,16 @@
                 var vp = $('#vpSelected').html();
 
                 var mapPageLink = null;
-                mapPageLink = mapPageAPILink + '?keyfield1=riskFactorBar&keyvalue1=' + riskFactorBar + '&kefield2=vp&keyvalue2=' + vp;
+                mapPageLink = mapPageAPILink + '?keyfield1=riskFactorBar&keyvalue1=' + riskFactorBar + '&keyfield2=vp&keyvalue2=' + vp;
 
                 window.open(mapPageLink);
 
             }
 
         });
+
+
+
 
 
         $('#notJoin').on('click-row.bs.table', function (row, $element, field) {
@@ -517,6 +549,7 @@
             window.open(mapPageLink);
 
         });
+
 
 
 
