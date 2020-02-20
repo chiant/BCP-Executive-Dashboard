@@ -10,6 +10,8 @@
             "closestRiskLocation": [113.33288879467501, 23.135579837441266],
             "currentAddress": "太古汇",
             "closestRiskAddress": "天河新作",
+            "allRiskAddressIn10km": ["天河新作", "车陂街美好居","龙湖街万科幸福誉"],
+            "allRiskAddressInLocation": [ [113.33288879467501, 23.135579837441266], [113.39346172248892, 23.12532548150483], [113.23213499295431, 23.402198591510476]],
             "dist2RiskAddr": 900,
             "risktype": "Risky Location",
             "vp": "Stephen"
