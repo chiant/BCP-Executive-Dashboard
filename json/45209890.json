@@ -1,17 +1,17 @@
 {
-    "caseid": "CA00004",
+    "caseid": "CA00001",
     "casedate": "Feb 05, 2020",
     "casetype": "Non-Respondent",
-    "caseselfreport": "",
+    "caseselfreport": "No fever, but feel unwell",
 
     "basicInfo": [
         {
             "item": "ID",
-            "value": "45209893"
+            "value": "45209890"
         },
         {
             "item": "Name",
-            "value": "Good Night"
+            "value": "Tomas Wang"
         },
         {
             "item": "Contact",
@@ -133,7 +133,7 @@
             "joinSurvey": "Yes",
             "workStatus": "Work in Office (TKH)",
             "riskType": "No Risk",
-            "location": "南岗街广海路2号",
+            "location": "南岗街广海路3号",
             "geoLocation": [126.564543989, 43.8719883344],
             "numOfRiskAddr500m": 3,
             "listOfRiskAddr500m": ["天河新作", "地河新作", "人河新作"],
@@ -148,7 +148,7 @@
             "joinSurvey": "No",
             "workStatus": "Unknown",
             "riskType": "No Risk",
-            "location": "南岗街广海路2号",
+            "location": "南岗街广海路3号",
             "geoLocation": [126.564543989, 43.8719883344],
             "numOfRiskAddr500m": 3,
             "listOfRiskAddr500m": ["天河新作", "地河新作", "人河新作"],
@@ -163,7 +163,7 @@
             "joinSurvey": "Yes",
             "workStatus": "Working From Home",
             "riskType": "No Risk",
-            "location": "南岗街广海路2号",
+            "location": "南岗街广海路3号",
             "geoLocation": [126.564543989, 43.8719883344],
             "numOfRiskAddr500m": 3,
             "listOfRiskAddr500m": ["天河新作", "地河新作", "人河新作"],

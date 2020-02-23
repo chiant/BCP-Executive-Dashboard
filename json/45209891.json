@@ -1,14 +1,17 @@
 {
-    "reportDate": "Feb 05, 2020",
+    "caseid": "CA00002",
+    "casedate": "Feb 05, 2020",
+    "casetype": "Non-Respondent",
+    "caseselfreport": "",
 
     "basicInfo": [
         {
             "item": "ID",
-            "value": "45219892"
+            "value": "45209891"
         },
         {
             "item": "Name",
-            "value": "Holy Smoke"
+            "value": "Mary Lee"
         },
         {
             "item": "Contact",
@@ -80,11 +83,11 @@
         },
         {
             "item": "Access Revoked",
-            "value": "No"
+            "value": "Yes"
         },
         {
             "item": "Revoke Reason",
-            "value": "NA"
+            "value": "Close Contact"
         },
 
         {

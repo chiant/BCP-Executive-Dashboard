@@ -1,0 +1,64 @@
+        * {
+            font-family: Arial Narrow, Helvetica, sans-serif;
+        }
+
+        .table .thead-blue th {
+            color: #fff;
+            background-color: #3195f1;
+            border-color: #0d7adf;
+            font-family: "Arial Narrow";
+            font-size: .8em;
+        }
+
+        tr {
+            font-family: "Arial Narrow";
+            font-size: .8em;
+            padding-left: 0em;
+            padding-right: 0em;
+        }
+
+        tr:hover {
+            background-color: rgba(0, 0, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .map-panel-gap {
+            margin-bottom: 0em;
+        }
+
+
+        .card-deck {
+            height: 28.5rem
+        }
+
+        .surveyStat-height {
+            height: 28%;
+        }
+
+        .workStatus-height {
+            height: 37%;
+        }
+
+        .riskFactor-height {
+            height: 45%;
+        }
+
+        .kpi:hover {
+            background-color: rgba(0, 123, 255, 1);
+            color: white;
+            cursor: pointer;
+        }
+
+
+
+        .kpi-label {
+            margin: 0;
+            padding: 0;
+        }
+
+        #searchDiv {
+
+            position: relative;
+            top: -5em;
+
+        }

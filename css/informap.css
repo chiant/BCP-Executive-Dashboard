@@ -1,0 +1,215 @@
+        * {
+            font-family: Arial Narrow, Helvetica, sans-serif;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        /*
+        #GDMap {
+            height: 50%;
+        }
+*/
+
+        /*
+        #infoPanel {
+            float: left;
+            background-color: rgba(0, 123, 255, 0.1);
+            border-right: 3px;
+            border-right-color: rgba(0, 123, 255, 0.4);
+            border-right-style: solid;
+            height: 100%;
+            width: 50%;
+        }
+*/
+        h2,
+        h3,
+        h4,
+        h5 {
+            text-align: center;
+            margin-top: 0.4em;
+            margin-bottom: 0.4em;
+            padding: 0;
+
+        }
+
+        h3 {
+            margin-top: 0.5em;
+            margin-bottom: 0;
+            padding: 0;
+        }
+
+        .table .thead-blue th {
+            color: #fff;
+            background-color: #3195f1;
+            border-color: #0d7adf;
+            font-family: "Arial Narrow";
+            font-size: 1em;
+            text-align: center;
+        }
+
+        .table .thead-dark th {
+            font-family: "Arial Narrow";
+            font-size: 1em;
+            text-align: center;
+        }
+
+        tr {
+            background-color: white;
+            border-bottom-color: black;
+            border: 4px;
+        }
+
+        #staffListTbl tr:hover {
+            background-color: rgba(0, 0, 255, 0.2);
+            cursor: pointer;
+        }
+
+        #revokeMarker {
+            display: none;
+            margin-left: .3em;
+            margin-right: .3em;
+            padding-left: .3em;
+            padding-right: .3em;
+            padding-top: .1em;
+            padding-bottom: .1em;
+            background-color: yellow;
+            border: .1em solid darkred;
+            color: darkred;
+            font-family: "Arial Narrow";
+            font-weight: bold
+        }
+
+        td {
+            font-family: "Arial Narrow";
+            /*            background-color: aliceblue;*/
+            text-align: center;
+            font-size: 1em;
+            padding-left: 1em;
+            padding-right: 1em;
+
+        }
+
+        .amap-marker-label {
+            position: absolute;
+            z-index: 2;
+            border: .1em solid #CC3333;
+
+            background-color: rgba(255, 140, 105, 0.8);
+            white-space: nowrap;
+            cursor: default;
+            padding: .3em;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+
+        #showAll {
+            margin: .6em;
+        }
+
+        .infoPanel {
+            float: left;
+            background-color: rgba(0, 123, 255, 0.1);
+            border-right: 3px;
+            border-right-color: rgba(0, 123, 255, 0.4);
+            border-right-style: solid;
+            height: 100%;
+            width: 50%;
+        }
+
+        .amap-full {
+            height: 100%;
+        }
+
+        .amap-half {
+            height: 50%;
+        }
+
+        .input-area {
+            display: none;
+            float: left;
+            margin: 0;
+            border-style: solid;
+            border-color: black;
+            border-width: .4em;
+            background-color: rgba(0, 123, 255, 0.2);
+            width: 50%;
+            height: 50%
+        }
+
+        .case-title {
+            width: 100%;
+            margin: 0;
+            color: white;
+            background-color: rgba(0, 123, 255, 1)
+        }
+
+        .self-report {
+            background-color: lightyellow;
+            width: 100%;
+            margin: 0;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            color: darkred;
+            font-style: italic;
+            font-weight: bolder
+        }
+
+        .investigator {
+            margin-left: .6em;
+            margin-right: .6em;
+        }
+
+        .result-sel {
+
+        }
+
+        .note-field {
+
+        }
+
+        .btn-green {
+            margin-left: .6em;
+            margin-right: .6em;
+            background-color: darkgreen;
+            border-color: darkgreen;
+            color: white
+        }
+
+        .btn-red {
+            margin-left: .6em;
+            margin-right: .6em;
+            background-color: darkred;
+            border-color: darkred;
+            color: white
+        }
+
+        .btn-green:hover {
+            background-color: limegreen;
+            border-color: limegreen;
+            color: white
+        }
+
+        .btn-red:hover {
+            background-color: palevioletred;
+            border-color: palevioletred;
+            color: white
+        }
+
+
+        button[disabled] {
+          color: white !important;
+         border-color: darkgray !important;
+          background-color: darkgray !important
+}
+
+        button[disabled]:hover {
+         cursor: default;
+          color: white !important;
+         border-color: darkgray !important;
+          background-color: darkgray !important
+}

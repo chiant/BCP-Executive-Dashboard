@@ -1,0 +1,143 @@
+     <!DOCTYPE html>
+     <html lang="en" style="height: 100%">
+
+     <head>
+
+         <meta charset="utf-8">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+         <meta name="description" content="">
+         <meta name="author" content="">
+
+         <title>BCP Management System - HSBC GSC China</title>
+         <link href="https://cdn.bootcss.com/font-awesome/5.12.1/css/all.min.css" rel="stylesheet" type="text/css">
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+         <link rel="stylesheet" href="../css/navigation.css">
+
+         <link rel="shortcut icon" href="../img/favicon.ico">
+     </head>
+
+     <body>
+         <div id="wrapper">
+
+             <!-- Sidebar -->
+             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+                 <!-- Sidebar - Brand -->
+                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.html?viewtype=all" target="viewpage">
+                     <div class="sidebar-brand-icon">
+                         <img src="../img/HSBC_Logo_NoWord_small2.png"  alt="Responsive image">
+                     </div>
+                     <div class="sidebar-brand-text mx-3">HSBC<br><small id="usrnm"></small></div>
+                 </a>
+
+                 <!-- Divider -->
+                 <hr class="sidebar-divider my-0">
+
+                 <!-- Nav Item - Dashboard -->
+                 <li class="nav-item active" id="masterDash">
+                     <a class="nav-link" href="dashboard.html?viewtype=all" target="viewpage">
+                         <i class="fas fa-fw fa-globe"></i>
+                         <span>GSC China Dashboard</span></a>
+                 </li>
+                 <li class="nav-item" id="userDash">
+                     <a class="nav-link" href="dashboard.html?viewtype=user" target="viewpage">
+                         <i class="fas fa-fw fa-users"></i>
+                         <span>My Team Dashboard</span></a>
+                 </li>
+
+                 <!-- Divider -->
+                 <!--                 <hr class="sidebar-divider">-->
+
+
+                 <!-- Nav Item - Pages Collapse Menu -->
+                 <li class="nav-item" id="myInvest">
+                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                         <i class="fas fa-fw fa-question-circle"></i>
+                         <span>My Investigation Center</span>
+                     </a>
+                     <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                         <div class="bg-white py-2 collapse-inner rounded">
+                             <h6 class="collapse-header">My To-Do-List</h6>
+                             <a id="myInvestNR" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=Non-Respondent" target="viewpage">Non-Respondent</a>
+                             <a id="myInvestHI" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=Health Issue" target="viewpage">Health Issue</a>
+                             <a id="myInvestCC" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=Close Contact" target="viewpage">Close Contact</a>
+                             <a id="myInvestHC" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=Had Contact" target="viewpage">Had Contact</a>
+                             <a id="myInvestIHW" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=Current in Hubei/Wenzhou" target="viewpage">Current in Hubei/Wenzhou</a>
+                             <a id="myInvestBHW" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=Been in Hubei/Wenzhou" target="viewpage">Been in Hubei/Wenzhou</a>
+                             <a id="myInvestBAK"class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=Back from Hubei/Wenzhou" target="viewpage">Back from Hubei/Wenzhou</a>
+
+                             <h6 class="collapse-header">My Submission</h6>
+                             <a class="collapse-item" href="buttons.html" target="viewpage">View Completed Cases</a>
+                         </div>
+                     </div> 
+                 </li>
+
+                 <li class="nav-item" id="myMonito">
+                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                         <i class="fas fa-fw fa-binoculars"></i>
+                         <span>My Monitoring Center</span>
+                     </a>
+                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                         <div class="bg-white py-2 collapse-inner rounded">
+                             <a id="myMonitoHI" class="collapse-item" href="informap.html?viewtype=myMonitor&viewvalue=Health Issue" target="viewpage">Health Issue</a>
+                             <a id="myMonitoCC" class="collapse-item" href="informap.html?viewtype=myMonitor&viewvalue=Close Contact" target="viewpage">Close Contact</a>
+                             <a id="myMonitoHC" class="collapse-item" href="informap.html?viewtype=myMonitor&viewvalue=Had Contact" target="viewpage">Had Contact</a>
+                             <a id="myMonitoIHW" class="collapse-item" href="informap.html?viewtype=myMonitor&viewvalue=Current in Hubei/Wenzhou" target="viewpage">Current in Hubei/Wenzhou</a>
+                             <a id="myMonitoBHW" class="collapse-item" href="informap.html?viewtype=myMonitor&viewvalue=Been in Hubei/Wenzhou" target="viewpage">Been in Hubei/Wenzhou</a>
+                             <a id="myMonitoBAK" class="collapse-item" href="informap.html?viewtype=myMonitor&viewvalue=Back from Hubei/Wenzhou" target="viewpage">Back from Hubei/Wenzhou</a>
+                             <a id="myMonitoST" class="collapse-item" href="informap.html?viewtype=myMonitor&viewvalue=Staff Travel" target="viewpage">Staff Travel</a>
+                             <a id="myMonitoCR" class="collapse-item" href="informap.html?viewtype=myMonitor&viewvalue=Close to Risky Location" target="viewpage">Close to Risky Location</a>
+                         </div>
+                     </div>
+                 </li>
+
+                 <li class="nav-item" id="searchStaff">
+                     <a class="nav-link" href="searchstaff.html" target="viewpage">
+                         <i class="fas fa-fw fa-search"></i>
+                         <span>Search Staff Profile</span></a>
+                 </li>
+
+                 <li class="nav-item" id="myRevoke">
+                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                         <i class="fas fa-fw fa-user-slash"></i>
+                         <span>My Revoke Center</span>
+                     </a>
+                     <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                         <div class="bg-white py-2 collapse-inner rounded">
+                             <a id="myRevokeView" class="collapse-item" href="informap.html?viewtype=myRevoke&viewvalue=viewRevoked" target="viewpage">View Staff of Access Revoked</a>
+                             <h6 class="collapse-header">Submit a Request</h6>
+                             <a id="myRevokeRvk" class="collapse-item" href="informap.html?viewtype=myRevoke&viewvalue=revokeRequest" target="viewpage">Revoke Staff's Access</a>
+                             <a id="myRevokeReacti" class="collapse-item" href="informap.html?viewtype=myRevoke&viewvalue=reactivationRequest" target="viewpage">Reactivate Staff's Access</a>
+                             <h6 class="collapse-header">View Submitted Requests</h6>
+                             <a id="myRevokeIPro" class="collapse-item" href="informap.html?viewtype=myRevoke&viewvalue=requestInProgress" target="viewpage">Request in Progress</a>
+                             <a id="myRevokeVComp" class="collapse-item" href="informap.html?viewtype=myRevoke&viewvalue=viewHistRequest" target="viewpage">View Completed Requests</a>
+                         </div>
+                     </div>
+                 </li>
+
+                 <li class="nav-item" id="myReview">
+                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                         <i class="fas fa-fw fa-user-check"></i>
+                         <span>My Review Center</span>
+                     </a>
+                     <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                         <div class="bg-white py-2 collapse-inner rounded">
+                             <a id="myReviewTDL" class="collapse-item" href="informap.html?viewtype=myReview&viewvalue=myToDoList" target="viewpage">My To-Do-List</a>
+                             <a id="myReviewVRcd" class="collapse-item" href="informap.html?viewtype=myReview&viewvalue=reviewHist" target="viewpage">My Review History</a>
+                         </div>
+                     </div>
+                 </li>
+
+                 <!-- Divider -->
+                 <hr class="sidebar-divider d-md-block">
+
+
+             </ul>
+             <!-- End of Sidebar -->
+         </div>
+
+     </body>
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.4.1/dist/jquery.min.js"></script>
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+     <script type="text/javascript" src="../js/navigation.js"></script>

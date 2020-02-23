@@ -1,5 +1,8 @@
 {
-    "reportDate": "Feb 05, 2020",
+    "caseid": "CA00003",
+    "casedate": "Feb 05, 2020",
+    "casetype": "Non-Respondent",
+    "caseselfreport": "",
 
     "basicInfo": [
         {
@@ -8,7 +11,7 @@
         },
         {
             "item": "Name",
-            "value": "Tomas Wang"
+            "value": "Holy Smoke"
         },
         {
             "item": "Contact",

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Search Staff Profile</title>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+
+    <link rel="shortcut icon" href="./img/favicon.ico">
+
+</head>
+<style>
+    body {
+        height: 100%;
+        margin: 4rem
+    }
+
+    h4 {
+        margin: 2rem
+    }
+</style>
+
+<body>
+
+
+    <img src="../img/search_staff.png" class="rounded mx-auto d-block" width="40%" alt="...">
+    <h4 class="text-center"><strong>Search Staff Profile</strong></h4>
+
+    <div id="searchDiv" class="input-group mb-3" style="margin: 0; padding-left: 10rem; padding-right: 10rem;">
+
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Search Staff</span>
+        </div>
+        <input id="inputid" type="text" class="form-control" placeholder="input staff id" aria-describedby="inputGroup-sizing-sm">
+        <button type="submit" id="searchbtn" class="col-md-2 btn-primary">submit</button>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    <script>
+        var mapPageAPILink = null;
+        mapPageAPILink = 'informap.html';
+        //       Please replace this link with the map page API link
+        //        mapPageAPILink='http//:servermainlink';
+
+
+        $('#searchbtn').click(function() {
+            var mapPageLink = null;
+            mapPageLink = mapPageAPILink + '?keyfield1=staffid&keyvalue1=' + $("#inputid").val();
+            window.open(mapPageLink, "viewpage");
+        });
+    </script>
+
+
+</body>
+</html>

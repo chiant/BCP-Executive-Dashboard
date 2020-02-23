@@ -1,3 +1,20 @@
+        var mainMapObj = null;
+        var surveyStatObj = null;
+        var workStatusObj = null;
+        var riskFactorObj = null; 
+
+            mainMapObj = echarts.init(document.getElementById("mainMap"));
+            surveyStatObj = echarts.init(document.getElementById("surveyStat"));
+            workStatusObj = echarts.init(document.getElementById("workStatus"));
+            riskFactorObj = echarts.init(document.getElementById("riskFactor"));            
+
+
+    function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]); return null; //返回参数值
+        }
+
         var convertData = function (data) {
             var res = [];
             for (var i = 0; i < data.length; i++) {
@@ -243,7 +260,7 @@
 
             riskFactorOpt = {
                 title: {
-                    text: 'Staff Under Risk',
+                    text: 'Staff Under Monitoring',
                     left: 'center',
                     textStyle: {
                         fontFamily: 'Arial Narrow',
@@ -349,29 +366,15 @@
                 if (mainMapOptUpdate && typeof mainMapOptUpdate === "object") {
                     mainMapObj.setOption(mainMapOptUpdate);
                 };
-
-
-                $('#notJoin').bootstrapTable('removeAll');
-                $('#revokeConfirm').bootstrapTable('removeAll');
-                $('#newQuara').bootstrapTable('removeAll');
-                $('#newRiskTbl').bootstrapTable('removeAll');
-
-                $('#notJoinTitle').html('Incomplete Survey Today' + ' (' + data.notJoin.length + ')');
-                $('#revokeConfirmTitle').html('Revoke to Be Confirmed' + ' (' + data.revokeConfirm.length + ')');
-                $('#newQuaraTitle').html('New Quarantine (Return to GD)' + ' (' + data.newQuara.length + ')');
-                $('#newRiskTblTitle').html('New Risk Case Indentified' + ' (' + data.newRiskTbl.length + ')');
-
-                $('#notJoin').bootstrapTable('load', data.notJoin);
-                $('#revokeConfirm').bootstrapTable('load', data.revokeConfirm);
-                $('#newQuara').bootstrapTable('load', data.newQuara);
-                $('#newRiskTbl').bootstrapTable('load', data.newRiskTbl);
-
+                
                 $('#confirmedInfection').html(data.confirmedInfection);
                 $('#staffUnderRisk').html(data.staffUnderRisk);
                 $('#accessRevoked').html(data.accessRevoked);
                 $('#underQuarantine').html(data.underQuarantine);
 
-                $('#reportDate').html("Data as" + " " + data.reportDate);
+                $('#mapFilter').html("All Staff");
+                
+                $(window.parent.footer.document).find("#reportDate").html("Data as" + " " + data.reportDate);
 
             });
 
@@ -390,7 +393,8 @@
                 if (mainMapOptUpdate && typeof mainMapOptUpdate === "object") {
                     mainMapObj.setOption(mainMapOptUpdate);
                 }
-
+                
+            
             });
 
         };
@@ -398,7 +402,7 @@
         function selMap(mapFilter) {
             var vpSel = $('#vpSelected').html();
 
-            var mapLink = './json/Map-All VPs-Risky Location.json';
+            var mapLink = '../json/Map-All VPs-Risky Location.json';
             //          var maplink='http:servermaplink?vpsel='+vpSel+'&mapfilter='+mapFilter;
 
             loadMainMap(mapLink);
@@ -406,19 +410,91 @@
             $('#mapFilter').html(mapFilter);
         }
 
-        function selVP(vpSel) {
-            $('#vpSelected').html(vpSel);
 
-            var masterLink = './json/Stephen Zhou.json';
-            //          var masterlink='http:servermainlink?vpsel='+vpSel;
-            loadMainPanel(masterLink);
-        }
+
+
+        $('.kpi').click(function () {
+            var kpicontent = this.id;
+            var mapPageLink = null;
+//            mapPageLink = mapPageAPILink + '?keyfield1=KPI&keyvalue1=' + kpicontent + '&keyfield2=vp&keyvalue2=' + vp;
+            mapPageLink = mapPageAPILink + '?viewtype=dash' + vpsel + '&viewvalue=KPI&selitem=' + kpicontent;
+           window.open(mapPageLink,"viewpage");
+        });
+
+
+
+
+        mainMapObj.on('click', function (parmas) {
+
+            if (parmas.componentSubType == 'scatter') {
+                var citynm = parmas.name;
+                var nstaff=parmas.value[2];
+                var mapfilter = $('#mapFilter').html();
+                
+                var mapPageLink = null;
+//                mapPageLink = mapPageAPILink + '?keyfield1=city&keyvalue1=' + citynm + '&keyfield2=vp&keyvalue2=' + vp + 'keyfield3=mapfilter&keyvalue3=' + mapfilter;
+                mapPageLink = mapPageAPILink + '?viewtype=dash' + vpsel + '&viewvalue=Map&selitem=' + citynm + '&selfilter=' + mapfilter;
+
+                window.open(mapPageLink,"viewpage");
+
+            }
+
+
+        });
+
+        surveyStatObj.on('click', function (parmas) {
+            if (parmas.componentSubType == 'bar') {
+                var surveyStatBar = parmas.name;
+
+                var mapPageLink = null;
+//                mapPageLink = mapPageAPILink + '?keyfield1=surveyStatBar&keyvalue1=' + surveyStatBar + '&keyfield2=vp&keyvalue2=' + vp;
+                mapPageLink = mapPageAPILink + '?viewtype=dash' + vpsel + '&viewvalue=surveyStatBar&selitem=' + surveyStatBar;
+
+                window.open(mapPageLink,"viewpage");
+
+            }
+
+        });
+
+
+        workStatusObj.on('click', function (parmas) {
+            if (parmas.componentSubType == 'bar') {
+                var workStatusBar = parmas.name;
+
+                var mapPageLink = null;
+//                mapPageLink = mapPageAPILink + '?keyfield1=workStatusBar&keyvalue1=' + workStatusBar + '&keyfield2=vp&keyvalue2=' + vp;
+                mapPageLink = mapPageAPILink + '?viewtype=dash' + vpsel + '&viewvalue=workStatusBar&selitem=' + workStatusBar;
+
+                window.open(mapPageLink,"viewpage");
+
+            }
+
+        });
+
+        riskFactorObj.on('click', function (parmas) {
+            if (parmas.componentSubType == 'bar') {
+                var riskFactorBar = parmas.name;
+
+                var mapPageLink = null;
+//                mapPageLink = mapPageAPILink + '?keyfield1=riskFactorBar&keyvalue1=' + riskFactorBar + '&keyfield2=vp&keyvalue2=' + vp;
+                mapPageLink = mapPageAPILink + '?viewtype=dash' + vpsel + '&viewvalue=riskFactorBar&selitem=' + riskFactorBar;
+
+                window.open(mapPageLink,"viewpage");
+
+            }
+
+        });
 
 
         var mapPageAPILink = null;
         mapPageAPILink = 'informap.html';
         //       Please replace this link with the map page API link
         //        mapPageAPILink='http//:servermainlink';
+
+        var viewtype = null;
+
+        var uid = null;
+        var urole = null;
 
 
         var mainMapOpt = null;
@@ -433,128 +509,22 @@
     
         var maxPointPlot = 100;
 
-        var mainMapObj = echarts.init(document.getElementById("mainMap"));
-        var surveyStatObj = echarts.init(document.getElementById("surveyStat"));
-        var workStatusObj = echarts.init(document.getElementById("workStatus"));
-        var riskFactorObj = echarts.init(document.getElementById("riskFactor"));
-
-
-        $('.kpi').click(function () {
-            var kpicontent = this.id;
-            var vp = $('#vpSelected').html();
-            var mapPageLink = null;
-            mapPageLink = mapPageAPILink + '?keyfield1=KPI&keyvalue1=' + kpicontent + '&keyfield2=vp&keyvalue2=' + vp;
-            window.open(mapPageLink);
-        });
-
-        $('#searchbtn').click(function () {
-            var mapPageLink = null;
-            mapPageLink = mapPageAPILink + '?keyfield1=staffid&keyvalue1=' + $("#inputid").val();
-            window.open(mapPageLink);
-        });
-
-
-        mainMapObj.on('click', function (parmas) {
-
-            if (parmas.componentSubType == 'scatter') {
-                var citynm = parmas.name;
-                var nstaff=parmas.value[2];
-                var vp = $('#vpSelected').html();
-                var mapfilter = $('#mapFilter').html();
-                
-                var mapPageLink = null;
-                mapPageLink = mapPageAPILink + '?keyfield1=city&keyvalue1=' + citynm + '&keyfield2=vp&keyvalue2=' + vp + 'keyfield3=mapfilter&keyvalue3=' + mapfilter;
-
-                window.open(mapPageLink);
-
-            }
-
-
-        });
-
-        surveyStatObj.on('click', function (parmas) {
-            if (parmas.componentSubType == 'bar') {
-                var surveyStatBar = parmas.name;
-                var vp = $('#vpSelected').html();
-
-                var mapPageLink = null;
-                mapPageLink = mapPageAPILink + '?keyfield1=surveyStatBar&keyvalue1=' + surveyStatBar + '&keyfield2=vp&keyvalue2=' + vp;
-
-                window.open(mapPageLink);
-
-            }
-
-        });
-
-
-        workStatusObj.on('click', function (parmas) {
-            if (parmas.componentSubType == 'bar') {
-                var workStatusBar = parmas.name;
-                var vp = $('#vpSelected').html();
-
-                var mapPageLink = null;
-                mapPageLink = mapPageAPILink + '?keyfield1=workStatusBar&keyvalue1=' + workStatusBar + '&keyfield2=vp&keyvalue2=' + vp;
-
-                window.open(mapPageLink);
-
-            }
-
-        });
-
-        riskFactorObj.on('click', function (parmas) {
-            if (parmas.componentSubType == 'bar') {
-                var riskFactorBar = parmas.name;
-                var vp = $('#vpSelected').html();
-
-                var mapPageLink = null;
-                mapPageLink = mapPageAPILink + '?keyfield1=riskFactorBar&keyvalue1=' + riskFactorBar + '&keyfield2=vp&keyvalue2=' + vp;
-
-                window.open(mapPageLink);
-
-            }
-
-        });
-
-
-
-
-
-        $('#notJoin').on('click-row.bs.table', function (row, $element, field) {
-            var staffid = $element.id;
-            var mapPageLink = null;
-            mapPageLink = mapPageAPILink + '?keyfield1=staffid&keyvalue1=' + staffid;
-            window.open(mapPageLink);
-
-        });
-
-        $('#revokeConfirm').on('click-row.bs.table', function (row, $element, field) {
-            var staffid = $element.id;
-            var mapPageLink = null;
-            mapPageLink = mapPageAPILink + '?keyfield1=staffid&keyvalue1=' + staffid;
-            window.open(mapPageLink);
-
-        });
-
-        $('#newQuara').on('click-row.bs.table', function (row, $element, field) {
-            var staffid = $element.id;
-            var mapPageLink = null;
-            mapPageLink = mapPageAPILink + '?keyfield1=staffid&keyvalue1=' + staffid;
-            window.open(mapPageLink);
-
-        });
-        $('#newRiskTbl').on('click-row.bs.table', function (row, $element, field) {
-            var staffid = $element.id;
-            var mapPageLink = null;
-            mapPageLink = mapPageAPILink + '?keyfield1=staffid&keyvalue1=' + staffid;
-            window.open(mapPageLink);
-
-        });
-
-
-
-
-
         $(function () {
+            
+
+            uid = window.parent.userid;
+            urole = window.parent.userrole;
+           
+          
+            vpsel=getUrlParam("viewtype");//all & user
+            if (vpsel == "user") {
+                vpsel == uid;
+                $("#overviewTitle").html("My Team Overview");
+            } else {
+                 $("#overviewTitle").html("GSC China Overview");               
+            }
+
+
             graphOptInit();
             if (mainMapOpt && typeof mainMapOpt === "object") {
                 mainMapObj.setOption(mainMapOpt, true);
@@ -570,8 +540,11 @@
             if (riskFactorOpt && typeof riskFactorOpt === "object") {
                 riskFactorObj.setOption(riskFactorOpt, true);
             }
+            
+            $('#mapFilter').html("All Staff");
 
-            var masterLink = './json/All VPs.json';
+
+            var masterLink = '../json/All VPs.json';
             //          var masterlink='http:servermainlink?vpsel=All%20VPs;
             loadMainPanel(masterLink);
 
