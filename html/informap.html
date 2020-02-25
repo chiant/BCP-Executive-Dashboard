@@ -21,7 +21,7 @@
         <h3><strong id="infoPanelTitle">Staff Information Explorer</strong></h3>
         <h5 id="staffselnum"><strong>Staff Selected:</strong></h5>
 
-        <table class="table table-sm" id="staffListTbl" data-toggle="table" data-height="180">
+        <table class="table table-sm" id="staffListTbl" data-toggle="table" data-unique-id="caseid" data-height="180">
             <thead class="thead-dark">
                 <tr>
                     <th data-field="casedate" data-width="10" data-width-unit="%" data-sortable="true">Date</th>
@@ -69,7 +69,7 @@
 
 
             <div class="row">
-                <button type="button" class="btn btn-primary btn-lg m-auto" data-toggle="modal" data-target="#modalTable">
+                <button type="button" class="btn btn-primary btn-lg m-auto" data-toggle="modal" data-target="#historyModalTable">
                     Show Travel History
                 </button>
             </div>
@@ -80,15 +80,15 @@
     <div id="GDMap"></div>
 
     <!--    My investigation center: Non-Respondent-->
-    <div id="Non-Respondent" class="input-area">
+    <div id="nonresp" class="input-area">
         <h3 class="text-center"><strong>Investigation Result Submission</strong></h3>
-        <h4 class="text-center case-title">Case#: CA00023, Non-Respondent, Tomas Wang, 05FEB2020</h4>
-        <label class="self-report">Self Report: No fever</label>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
         <div class="container">
             <form>
                 <div class="form-group">
-                    <label for="nonRespResult">*Investigation Result</label>
-                    <select id="nonRespResult" class="form-control result-sel" name="result">
+                    <label for="nonrespResult">*Investigation Result</label>
+                    <select id="nonrespResult" class="form-control result-sel" name="result">
                         <option value=null style="display: none"></option>
                         <option value=2>Self-declared: No Risk</option>
                         <option value=4>Fail to Contact</option>
@@ -100,24 +100,558 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="nonRespNotes" class="notes">Notes</label>
-                    <textarea id="nonRespNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="Mandatory field if any risk is identified, please provide more details, such as health issue description, close contacted person profile (name,contact date & location), hospital name, diagnosis date & result, etc."></textarea>
+                    <label for="nonrespNotes" class="notes">Notes</label>
+                    <textarea id="nonrespNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="Mandatory field if any risk is identified, please provide more details, such as health issue description, close contacted person profile (name,contact date & location), hospital name, diagnosis date & result, etc."></textarea>
                 </div>
 
                 <div>
-                    <button type="submit" class="btn btn-green" disabled="disabled">Submit for No Revoke</button>
-                    <button type="submit" class="btn btn-red" disabled="disabled">Submit for Revoke</button>
+                    <button type="button" class="btn btn-submit btn-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for No Revoke</button>
+                    <button type="button" class="btn btn-submit btn-red" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Revoke</button>
+                    <label class="text-center investigator"></label>
+                    
+                </div>
+
+            </form>
+        </div> 
+    </div>
+
+    <!--    My investigation center: Health Issue-->
+    <div id="healthcase" class="input-area">
+        <h3 class="text-center"><strong>Investigation Result Submission</strong></h3>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="healthcaseResult">*Investigation Result</label>
+                    <select id="healthcaseResult" class="form-control result-sel" name="result">
+                        <option value=null style="display: none"></option>
+                        <option value=2>No Health Issue</option>
+                        <option value=1>NPC Related Health Issue</option>
+                        <option value=4>Non-NPC Related Health Issue</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="healthcaseNotes" class="notes">Notes</label>
+                    <textarea id="healthcaseNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="Mandatory field if any health issue is identified, please provide more details, such as health issue description, whether go to hospital, hospital name, diagnosis date & result, etc."></textarea>
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-submit btn-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for No Revoke</button>
+                    <button type="button" class="btn btn-submit btn-red" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Revoke</button>
                     <label class="text-center investigator"></label>
                 </div>
 
             </form>
-        </div>
+        </div> 
     </div>
+    <!--    My investigation center: close contact-->
+    <div id="closecontact" class="input-area">
+        <h3 class="text-center"><strong>Investigation Result Submission</strong></h3>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="closecontactResult">*Investigation Result</label>
+                    <select id="closecontactResult" class="form-control result-sel" name="result">
+                        <option value=null style="display: none"></option>
+                        <option value=2>No Confirmed Close Contact by Local Authority</option>
+                        <option value=1>Confirmed Close Contact by Local Authority</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="closecontactNotes" class="notes">Notes</label>
+                    <textarea id="closecontactNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="Mandatory field if confirmed close contact case is identified, please provide more details, such as contact person name, where is he/she from, contact date, location & reasons, relationship etc."></textarea>
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-submit btn-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for No Revoke</button>
+                    <button type="button" class="btn btn-submit btn-red" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Revoke</button>
+                    <label class="text-center investigator"></label>
+                </div>
+
+            </form>
+        </div> 
+    </div>
+    
+    
+     <!--    My investigation center: had contact-->
+    <div id="hadcontact" class="input-area">
+        <h3 class="text-center"><strong>Investigation Result Submission</strong></h3>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="hadcontactResult">*Investigation Result</label>
+                    <select id="hadcontactResult" class="form-control result-sel" name="result">
+                        <option value=null style="display: none"></option>
+                        <option value=2>has not had contact with Hubei/Wenzhou people</option>
+                        <option value=1>Confirmed had contact with Hubei/Wenzhou people</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="hadcontactNotes" class="notes">Notes</label>
+                    <textarea id="hadcontactNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="Mandatory field if confirmed had contact case is identified, please provide more details, such as contact person name, where is he/she from, contact date, location & reasons, relationship etc."></textarea>
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-submit btn-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for No Revoke</button>
+                    <button type="button" class="btn btn-submit btn-red" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Revoke</button>
+                    <label class="text-center investigator"></label>
+                </div>
+
+            </form>
+        </div> 
+    </div>   
+     <!--    My investigation center: currently in Hubei/Wenzhou-->
+    <div id="curinhubei" class="input-area">
+        <h3 class="text-center"><strong>Investigation Result Submission</strong></h3>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="curinhubeiResult">*Investigation Result</label>
+                    <select id="curinhubeiResult" class="form-control result-sel" name="result">
+                        <option value=null style="display: none"></option>
+                        <option value=2>Not in Hubei/Wenzhou Now</option>
+                        <option value=1>Confirmed in Hubei/Wenzhou Now</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="curinhubeiNotes" class="notes">Notes</label>
+                    <textarea id="curinhubeiNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="Mandatory field if confirmed in Hubei/Wenzhou now, please provide information such as start date of physically being in Hubei/Wenzhou, reason for staying there, current health status, etc."></textarea>
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-submit btn-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for No Revoke</button>
+                    <button type="button" class="btn btn-submit btn-red" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Revoke</button>
+                    <label class="text-center investigator"></label>
+                </div>
+
+            </form>
+        </div> 
+    </div>   
+ 
+    
+    <!--    My investigation center: been in Hubei-->
+    <div id="beenhubei" class="input-area">
+        <h3 class="text-center"><strong>Investigation Result Submission</strong></h3>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="beenhubeiResult">*Investigation Result</label>
+                    <select id="beenhubeiResult" class="form-control result-sel" name="result">
+                        <option value=null style="display: none"></option>
+                        <option value=2>Has NOT been to Hubei/Wenzhou</option>
+                        <option value=4>Confirmed having been to Hubei/Wenzhou</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="beenhubeiNotes" class="notes">Notes</label>
+                    <textarea id="beenhubeiNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="Mandatory field if confirmed been to Hubei/Wenzhou, please provide more details, such as start date & leave date of having been in Hubei/Wenzhou, train & flight #, stay location and stay reasons etc."></textarea>
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-submit btn-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for No Revoke</button>
+                    <button type="button" class="btn btn-submit btn-red" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Revoke</button>
+                    <label class="text-center investigator"></label>
+                </div>
+
+            </form>
+        </div> 
+    </div>
+            
+ 
+            
+     <!--    My investigation center: back from Hubei/Wenzhou-->
+    <div id="backhubei" class="input-area">
+        <h3 class="text-center"><strong>Investigation Result Submission</strong></h3>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="backhubeiResult">*Investigation Result</label>
+                    <select id="backhubeiResult" class="form-control result-sel" name="result">
+                        <option value=null style="display: none"></option>
+                        <option value=2>Not coming back from Hubei/Wenzhou</option>
+                        <option value=1>Confirmed coming back from Hubei/Wenzhou</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="backhubeiNotes" class="notes">Notes</label>
+                    <textarea id="backhubeiNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="Mandatory field if confirmed coming back from Hubei/Wenzhou, please provide more details, such as leave date of having been in Hubei/Wenzhou, train & flight #, personal health status etc."></textarea>
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-submit btn-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for No Revoke</button>
+                    <button type="button" class="btn btn-submit btn-red" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Revoke</button>
+                    <label class="text-center investigator"></label>
+                </div>
+
+            </form>
+        </div> 
+    </div>                 
+ 
+                              
+                                                           
+    <!--    My investigation center: View Completed Cases-->
+    <div id="viewcompletecase" class="input-area">
+        <h3 class="text-center"><strong>Investigation Result Submission</strong></h3>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="viewcompletecaseResult">*Investigation Result</label>
+                    <input id="viewcompletecaseResult" class="form-control result-sel" disabled="disabled" name="result">
+                </div>
+                <div class="form-group">
+                    <label for="viewcompletecaseNotes" class="notes">Notes</label>
+                    <textarea id="viewcompletecaseNotes" disabled="disabled" name="submitternotes" class="form-control note-field" rows="3" placeholder=""></textarea>
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-submit btn-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for No Revoke</button>
+                    <button type="button" class="btn btn-submit btn-red" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Revoke</button>
+                    <label class="text-center investigator"></label>
+                    <label class="text-center case-status">Case Status: Open</label>
+
+                </div>
+
+            </form>
+        </div> 
+    </div>                                                                                              
+
+                              
+                                                            
+     <!--    My revoke center: request access revoke-->
+    <div id="revokeRequest" class="input-area">
+        <h3 class="text-center"><strong>Revoke Staff's Access</strong></h3>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="revokeRequestResult">*Revoke Reason</label>
+                    <select id="revokeRequestResult" class="form-control result-sel" name="result">
+                        <option value=null style="display: none"></option>
+                        <option value=1>Suspicious NCP</option>
+                        <option value=3>Confirmed NCP</option>
+                        <option value=5>Close Contact</option>
+                        <option value=7>Self-quarantine, required by Bank or Local Authority</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="revokeRequestNotes" class="notes">*Notes</label>
+                    <textarea id="revokeRequestNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="Mandatory field, please provide more details, such as health issue description, whether go to hospital, hospital name, diagnosis date & result, close contact person profile, quarantine reason, start & end date etc."></textarea>
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-submit btn-red" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Revoke</button>
+                    <label class="text-center investigator"></label>
+                </div>
+
+            </form>
+        </div> 
+    </div>                                                                                                <!--    My revoke center: request access reactivation-->
+                             
+   <div id="reactivationRequest" class="input-area">
+        <h3 class="text-center"><strong>Reactivate Staff's Access</strong></h3>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="reactivationRequestResult">*Reactivation Reason</label>
+                    <select id="reactivationRequestResult" class="form-control result-sel" name="result">
+                        <option value=null style="display: none"></option>
+                        <option value=2>No health issue found after self-quarantine</option>
+                        <option value=4>Recovery from sickness (with proof document)</option>
+                        <option value=4>Wrong revoke request</option>
+                        <option value=4>Other reasons</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reactivationRequestNotes" class="notes">*Notes</label>
+                    <textarea id="reactivationRequestNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="Mandatory field, please provide more details of justifications for reactivitation"></textarea>
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-submit btn-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Reactivation</button>
+                    <label class="text-center investigator"></label>
+                </div>
+
+            </form>
+        </div> 
+    </div>    
+                         
+          <!--    My Revoke center: Request in Process-->
+                                                                 
+    <div id="requestInProgress" class="input-area">
+        <h3 class="text-center"><strong>View Request in Process</strong></h3>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="requestInProgressResult">*Reactivation Reason</label>
+                    <input id="requestInProgressResult" class="form-control result-sel" disabled="disabled" name="result">
+                </div>
+                <div class="form-group">
+                    <label for="requestInProgressNotes" class="notes">*Notes</label>
+                    <textarea id="requestInProgressNotes" disabled="disabled" name="submitternotes" class="form-control note-field" rows="3" placeholder=""></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-submit btn-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Reactivation</button>
+                    
+                    <label class="text-center investigator"></label>
+                </div>
+                <div class="form-group reviewer-note-div">
+                    <label for="requestInProgressReviewNotes" class="notes" >Reviewer's Notes</label>
+                    <textarea id="requestInProgressReviewNotes" name="reviewernotes" class="form-control review-note-field" disabled="disabled" rows="2" placeholder=""></textarea>
+                </div>
+                <button type="button" class="btn btn-submit btn-reviewer-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Approval</button>
+                <button type="button" class="btn btn-submit btn-reviewer-red" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Rejection</button>
+                <label class="text-center reviewer"></label> 
+                <label class="text-center case-status"></label>   
+            </form>
+        </div> 
+    </div>    
+ 
+                                                     
+          <!--    My Revoke center: View Historical Request-->
+                                                                 
+    <div id="viewHistRequest" class="input-area">
+        <h3 class="text-center"><strong>View Completed Request</strong></h3>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="viewHistRequestResult">*Reactivation Reason</label>
+                    <input id="viewHistRequestResult" class="form-control result-sel" disabled="disabled" name="result">
+                </div>
+                <div class="form-group">
+                    <label for="viewHistRequestNotes" class="notes">*Notes</label>
+                    <textarea id="viewHistRequestNotes" disabled="disabled" name="submitternotes" class="form-control note-field" rows="3" placeholder=""></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-submit btn-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Reactivation</button>
+                    
+                    <label class="text-center investigator"></label>
+                </div>
+                <div class="form-group reviewer-note-div">
+                    <label for="viewHistRequestReviewNotes" class="notes" >Reviewer's Notes</label>
+                    <textarea id="viewHistRequestReviewNotes" name="reviewernotes" class="form-control review-note-field" disabled="disabled" rows="2" placeholder=""></textarea>
+                </div>
+                <button type="button" class="btn btn-submit btn-reviewer-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Approval</button>
+                <button type="button" class="btn btn-submit btn-reviewer-red" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Rejection</button>
+                <label class="text-center reviewer"></label> 
+                <label class="text-center case-status"></label>   
+            </form>
+        </div> 
+    </div>                                                                   
+                                                      
+       <!--    My Review center: My review to do list-->
+    <div id="reviewlist" class="input-area">
+        <h3 class="text-center"><strong>Request Review Submission</strong></h3>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="reviewlistResult">*Reactivation Reason</label>
+                    <input id="reviewlistResult" class="form-control result-sel" disabled="disabled" name="result">
+                </div>
+                <div class="form-group">
+                    <label for="reviewlistNotes" class="notes">*Notes</label>
+                    <textarea id="reviewlistNotes" disabled="disabled" name="submitternotes" class="form-control note-field" rows="3" placeholder=""></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-submit btn-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Reactivation</button>
+                    
+                    <label class="text-center investigator"></label>
+                    <label class="text-center case-status"></label>
+                </div>
+                <div class="form-group">
+                    <label for="reviewlistReviewNotes" class="notes">Reviewer's Notes</label>
+                    <textarea id="reviewlistReviewNotes" name="reviewernotes" class="form-control review-note-field" rows="2" placeholder=""></textarea>
+                </div>
+                <button type="button" class="btn btn-submit btn-reviewer-green" data-toggle="modal" data-target="#modalSubmit">Submit for Approval</button>
+                <button type="button" class="btn btn-submit btn-reviewer-red" data-toggle="modal" data-target="#modalSubmit">Submit for Rejection</button>
+                <label class="text-center reviewer"></label>                
+            </form>
+        </div> 
+    </div>   
+                         
+                                              
+         <!--    My Review center: My review history-->
+                                                                 
+    <div id="reviewHist" class="input-area">
+        <h3 class="text-center"><strong>View Completed Review</strong></h3>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="reviewHistResult">*Reactivation Reason</label>
+                    <input id="reviewHistResult" class="form-control result-sel" disabled="disabled" name="result">
+                </div>
+                <div class="form-group">
+                    <label for="reviewHistNotes" class="notes">*Notes</label>
+                    <textarea id="reviewHistNotes" disabled="disabled" name="submitternotes" class="form-control note-field" rows="3" placeholder=""></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-submit btn-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Reactivation</button>
+                    
+                    <label class="text-center investigator"></label>
+                </div>
+                <div class="form-group">
+                    <label for="reviewHistReviewNotes" class="notes" >Reviewer's Notes</label>
+                    <textarea id="reviewHistReviewNotes" name="reviewernotes" class="form-control review-note-field" disabled="disabled" rows="2" placeholder=""></textarea>
+                </div>
+                <button type="button" class="btn btn-submit btn-reviewer-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Approval</button>
+                <button type="button" class="btn btn-submit btn-reviewer-red" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Rejection</button>
+                <label class="text-center reviewer"></label> 
+                <label class="text-center case-status"></label>   
+            </form>
+        </div> 
+    </div>    
+                     
+
+                          
+                                                    
+         <!--    My Action center: My Action history-->
+                                                                 
+    <div id="actionHist" class="input-area">
+        <h3 class="text-center"><strong>View Completed Action</strong></h3>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="actionHistResult">*Request Reason</label>
+                    <input id="actionHistResult" class="form-control result-sel" disabled="disabled" name="result">
+                </div>
+                <div class="form-group">
+                    <label for="actionHistNotes" class="notes">*Notes</label>
+                    <textarea id="actionHistNotes" disabled="disabled" name="submitternotes" class="form-control note-field" rows="3" placeholder=""></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-submit btn-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for</button>
+                    
+                    <label class="text-center investigator"></label>
+                </div>
+<!--
+                <div class="form-group">
+                    <label for="actionHistReviewNotes" class="notes" >Reviewer's Notes</label>
+                    <textarea id="actionHistReviewNotes" name="reviewernotes" class="form-control review-note-field" disabled="disabled" rows="2" placeholder=""></textarea>
+                </div>
+-->
+                <button type="button" class="btn btn-submit btn-reviewer-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Access Reactivation Completion</button>
+                <button type="button" class="btn btn-submit btn-reviewer-red" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Access Revoke Completion</button>
+                <label class="text-center reviewer"></label> 
+                <label class="text-center case-status"></label> 
+            </form>
+        </div> 
+    </div>                                                                                                            
+          <!--    My Action center: My To-do-list-->
+                                                                 
+    <div id="actionlist" class="input-area">
+        <h3 class="text-center"><strong>My Action List</strong></h3>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="actionlistResult">*Request Reason</label>
+                    <input id="actionlistResult" class="form-control result-sel" disabled="disabled" name="result">
+                </div>
+                <div class="form-group">
+                    <label for="actionlistNotes" class="notes">*Notes</label>
+                    <textarea id="actionlistNotes" disabled="disabled" name="submitternotes" class="form-control note-field" rows="3" placeholder=""></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" class="btn btn-submit btn-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for</button>
+                    
+                    <label class="text-center investigator"></label>
+                </div>
+<!--
+                <div class="form-group">
+                    <label for="actionlistReviewNotes" class="notes" >Reviewer's Notes</label>
+                    <textarea id="actionlistReviewNotes" name="reviewernotes" class="form-control review-note-field" disabled="disabled" rows="2" placeholder=""></textarea>
+                </div>
+-->
+                <button type="button" class="btn btn-submit btn-reviewer-green"  data-toggle="modal" data-target="#modalSubmit">Submit for Access Reactivation Completion</button>
+                <button type="button" class="btn btn-submit btn-reviewer-red"  data-toggle="modal" data-target="#modalSubmit">Submit for Access Revoke Completion</button>
+                <label class="text-center reviewer"></label> 
+                <label class="text-center case-status"></label> 
+            </form>
+        </div> 
+    </div>                                                                                                                                                             
+<!-- Modal: investigation submit -->
+<div class="modal fade" id="modalSubmit" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered"  role="document">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalSubmitTitle">Submission Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="submitPrompt">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" id="cancelbtn" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn" id="submitbtn">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
-    <div id="modalTable" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-xl" role="document">
+<!-- Modal: successfully submitted -->
+
+<div class="modal fade" id="successSubmit" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered"  role="document">
+    <div class="modal-content" >
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalSubmitTitle">Submission Succeed</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="background-color:deepskyblue">Your submission data has been well received! thank you!</div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>   
+        
+        
+        
+        
+        
+         
+ <!-- Modal: Travel History Button -->
+  
+   
+    <div id="historyModalTable" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 id="historyTitle" class="modal-title">Travel History Tracking</h5>
@@ -149,16 +683,6 @@
         </div>
     </div>
 
-    <!--
-    <div class="modal fade" id="loadingModal">
-    <div style="width: 200px;height:20px; z-index: 20000; position: absolute; text-align: center; left: 50%; top: 50%;margin-left:-100px;margin-top:-10px">
-        <div class="progress progress-striped active" style="margin-bottom: 0;">
-            <div class="progress-bar" style="width: 100%;"></div>
-        </div>
-        <h5>Loading Data...</h5>
-    </div>
-    </div>
--->
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.4.1/dist/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>

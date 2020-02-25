@@ -54,21 +54,21 @@
                  <li class="nav-item" id="myInvest">
                      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                          <i class="fas fa-fw fa-question-circle"></i>
-                         <span>My Investigation Center</span>
+                         <span>My Case Center</span><span class="badge badge-primary badge-nav" id='totcase'></span>
                      </a>
                      <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                          <div class="bg-white py-2 collapse-inner rounded">
                              <h6 class="collapse-header">My To-Do-List</h6>
-                             <a id="myInvestNR" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=Non-Respondent" target="viewpage">Non-Respondent</a>
-                             <a id="myInvestHI" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=Health Issue" target="viewpage">Health Issue</a>
-                             <a id="myInvestCC" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=Close Contact" target="viewpage">Close Contact</a>
-                             <a id="myInvestHC" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=Had Contact" target="viewpage">Had Contact</a>
-                             <a id="myInvestIHW" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=Current in Hubei/Wenzhou" target="viewpage">Current in Hubei/Wenzhou</a>
-                             <a id="myInvestBHW" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=Been in Hubei/Wenzhou" target="viewpage">Been in Hubei/Wenzhou</a>
-                             <a id="myInvestBAK"class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=Back from Hubei/Wenzhou" target="viewpage">Back from Hubei/Wenzhou</a>
+                             <a id="myInvestNR" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=nonresp" target="viewpage">Non-Respondent<span class="badge badge-primary badge-nav" id='nonresp'></span></a>
+                             <a id="myInvestHI" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=healthcase" target="viewpage">Health Issue<span class="badge badge-primary badge-nav" id='healthcase'></span></a>
+                             <a id="myInvestCC" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=closecontact" target="viewpage">Close Contact<span class="badge badge-primary badge-nav" id='closecontact'></span></a>
+                             <a id="myInvestHC" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=hadcontact" target="viewpage">Had Contact<span class="badge badge-primary badge-nav" id='hadcontact'></span></a>
+                             <a id="myInvestIHW" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=curinhubei" target="viewpage">Current in Hubei/Wenzhou<span class="badge badge-primary badge-nav" id='curinhubei'></span></a>
+                             <a id="myInvestBHW" class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=beenhubei" target="viewpage">Been in Hubei/Wenzhou<span class="badge badge-primary badge-nav" id='beenhubei'></span></a>
+                             <a id="myInvestBAK"class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=backhubei" target="viewpage">Back from Hubei/Wenzhou<span class="badge badge-primary badge-nav" id='backhubei'></span></a>
 
                              <h6 class="collapse-header">My Submission</h6>
-                             <a class="collapse-item" href="buttons.html" target="viewpage">View Completed Cases</a>
+                             <a class="collapse-item" href="informap.html?viewtype=myInvestigation&viewvalue=viewcompletecase" target="viewpage">View Submitted Cases</a>
                          </div>
                      </div> 
                  </li>
@@ -110,7 +110,7 @@
                              <a id="myRevokeRvk" class="collapse-item" href="informap.html?viewtype=myRevoke&viewvalue=revokeRequest" target="viewpage">Revoke Staff's Access</a>
                              <a id="myRevokeReacti" class="collapse-item" href="informap.html?viewtype=myRevoke&viewvalue=reactivationRequest" target="viewpage">Reactivate Staff's Access</a>
                              <h6 class="collapse-header">View Submitted Requests</h6>
-                             <a id="myRevokeIPro" class="collapse-item" href="informap.html?viewtype=myRevoke&viewvalue=requestInProgress" target="viewpage">Request in Progress</a>
+                             <a id="myRevokeIPro" class="collapse-item" href="informap.html?viewtype=myRevoke&viewvalue=requestInProgress" target="viewpage">Request in Process</a>
                              <a id="myRevokeVComp" class="collapse-item" href="informap.html?viewtype=myRevoke&viewvalue=viewHistRequest" target="viewpage">View Completed Requests</a>
                          </div>
                      </div>
@@ -119,16 +119,27 @@
                  <li class="nav-item" id="myReview">
                      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
                          <i class="fas fa-fw fa-user-check"></i>
-                         <span>My Review Center</span>
+                         <span>My Review Center<span class="badge badge-primary badge-nav" id='totreview'></span></span>
                      </a>
                      <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                          <div class="bg-white py-2 collapse-inner rounded">
-                             <a id="myReviewTDL" class="collapse-item" href="informap.html?viewtype=myReview&viewvalue=myToDoList" target="viewpage">My To-Do-List</a>
+                             <a id="myReviewTDL" class="collapse-item" href="informap.html?viewtype=myReview&viewvalue=reviewlist" target="viewpage">My To-Do-List<span class="badge badge-primary badge-nav" id='reviewlist'></span></a>
                              <a id="myReviewVRcd" class="collapse-item" href="informap.html?viewtype=myReview&viewvalue=reviewHist" target="viewpage">My Review History</a>
                          </div>
                      </div>
                  </li>
-
+                 <li class="nav-item" id="myAction">
+                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                         <i class="fas fa-fw fa-shield-alt"></i>
+                         <span>My Action Center<span class="badge badge-primary badge-nav" id='totaction'></span></span>
+                     </a>
+                     <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                         <div class="bg-white py-2 collapse-inner rounded">
+                             <a id="myActionTDL" class="collapse-item" href="informap.html?viewtype=myAction&viewvalue=actionlist" target="viewpage">My To-Do-List<span class="badge badge-primary badge-nav" id='actionlist'></span></a>
+                             <a id="myActionVRcd" class="collapse-item" href="informap.html?viewtype=myAction&viewvalue=actionHist" target="viewpage">My Action History</a>
+                         </div>
+                     </div>
+                 </li>
                  <!-- Divider -->
                  <hr class="sidebar-divider d-md-block">
 

@@ -3,7 +3,18 @@
     "casedate": "Feb 05, 2020",
     "casetype": "Health Issue",
     "caseselfreport": "",
-
+    "casestatus": "new",
+    "caseconfirmedresult": "self-claim, no risk",
+    "casesubmitternotes": "phone out of power, no risk",
+    "casedecision": "No Revoke",
+    "reviewerdecision": "Approval",
+    "reviewernotes": "this is good",
+    "casesubmitdate": "Feb 05, 2020",
+    "casereviewdate": "Feb 07, 2020",
+     "caseclosedate": "Feb 09, 2020",  
+    "casesubmitter":"Stephen Zhou",
+    "reviewername":"Rachel Chen",
+    "pspersonname":"",
     "basicInfo": [
         {
             "item": "ID",

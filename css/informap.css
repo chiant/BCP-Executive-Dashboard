@@ -5,6 +5,7 @@
         html,
         body {
             height: 100%;
+            background-color: rgba(0, 123, 255, 0.1)
         }
 
         /*
@@ -129,6 +130,10 @@
             height: 50%;
         }
 
+        .amap-small {
+            height: 40%;
+        }
+
         .input-area {
             display: none;
             float: left;
@@ -164,25 +169,30 @@
             margin-right: .6em;
         }
 
-        .result-sel {
+        .result-sel {}
 
-        }
+        .note-field {}
 
-        .note-field {
+        .reviewer-note-div{}
 
+        .review-note-field {}
+
+        .case-status {}
+
+        .btn-submit {
+            margin-left: .6em;
+            margin-right: .6em;
+            color: white
         }
 
         .btn-green {
-            margin-left: .6em;
-            margin-right: .6em;
+
             background-color: darkgreen;
             border-color: darkgreen;
             color: white
         }
 
         .btn-red {
-            margin-left: .6em;
-            margin-right: .6em;
             background-color: darkred;
             border-color: darkred;
             color: white
@@ -200,16 +210,49 @@
             color: white
         }
 
+        .btn-reviewer-green {
+
+            background-color: darkgreen;
+            border-color: darkgreen;
+            color: white
+        }
+
+        .btn-reviewer-red {
+            background-color: darkred;
+            border-color: darkred;
+            color: white
+        }
+
+        .btn-reviewer-green:hover {
+            background-color: limegreen;
+            border-color: limegreen;
+            color: white
+        }
+
+        .btn-reviewer-red:hover {
+            background-color: palevioletred;
+            border-color: palevioletred;
+            color: white
+        }
+
+
+        .modal-green {
+            background-color: lightgreen;
+        }
+
+        .modal-red {
+            background-color: lightpink;
+        }
 
         button[disabled] {
-          color: white !important;
-         border-color: darkgray !important;
-          background-color: darkgray !important
-}
+            color: white !important;
+            border-color: darkslategray !important;
+            background-color: darkslategray !important
+        }
 
         button[disabled]:hover {
-         cursor: default;
-          color: white !important;
-         border-color: darkgray !important;
-          background-color: darkgray !important
-}
+            cursor: default;
+            color: white !important;
+            border-color: darkslategray !important;
+            background-color: darkslategray !important
+        }

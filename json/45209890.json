@@ -3,7 +3,19 @@
     "casedate": "Feb 05, 2020",
     "casetype": "Non-Respondent",
     "caseselfreport": "No fever, but feel unwell",
-
+    "casestatus": "new",
+    "caseconfirmedresult": "self-claim, no risk",
+    "casesubmitternotes": "phone out of power, no risk",
+    "casedecision": "Revoke",
+    "reviewerdecision": "Approval",
+    "reviewernotes": "this is good",
+    "casesubmitdate": "Feb 05, 2020",
+    "casereviewdate": "Feb 07, 2020",
+     "caseclosedate": "Feb 09, 2020",  
+    "casesubmitter":"Stephen Zhou",
+    "reviewername":"Rachel Chen",
+    "pspersonname":"Lao Wang",
+    
     "basicInfo": [
         {
             "item": "ID",

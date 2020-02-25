@@ -3,7 +3,18 @@
     "casedate": "Feb 05, 2020",
     "casetype": "Non-Respondent",
     "caseselfreport": "",
-
+    "casestatus": "new",
+    "caseconfirmedresult": "confirmed NCP",
+    "casesubmitternotes": "in hospital now",
+    "casedecision": "Revoke",
+    "reviewerdecision": "Rejection",
+    "reviewernotes": "this is bad",
+    "casesubmitdate": "Feb 05, 2020",
+    "casereviewdate": "Feb 07, 2020",
+     "caseclosedate": "Feb 09, 2020",  
+    "casesubmitter":"Mike Zhou",
+    "reviewername":"Tom Chen",
+    "pspersonname":"",
     "basicInfo": [
         {
             "item": "ID",

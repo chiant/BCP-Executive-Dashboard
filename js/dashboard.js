@@ -545,7 +545,7 @@
 
 
             var masterLink = '../json/All VPs.json';
-            //          var masterlink='http:servermainlink?vpsel=All%20VPs;
+            //          var masterlink='http:servermainlink?viewtype=user&userid=1122000;
             loadMainPanel(masterLink);
 
         });
