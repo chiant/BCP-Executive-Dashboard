@@ -198,8 +198,7 @@
 
                 if (pagetype == "myRevoke") {
                     $('.self-report').hide();
-                    $('.result-sel').val(data.caseconfirmedresult);
-                    $('.note-field').val(data.casesubmitternotes);
+
                     $('.investigator').html('by ' + data.casesubmitter);
                     if (pagesubtype == "revokeRequest") {
                         $('.case-title').html('Request to Revoke Access for ' + staffname);
@@ -209,6 +208,9 @@
                     };
                     if (pagesubtype == "requestInProgress" || pagesubtype == "viewHistRequest") {
 
+                        $('.result-sel').val(data.caseconfirmedresult);
+                        $('.note-field').val(data.casesubmitternotes);
+                        
                         $('.reviewer-note-div').show();
                         $('.case-status').show();
 
@@ -278,7 +280,7 @@
                     $('.btn-green').html('Request for '+ data.casedecision);
                     console.log(data.casedecision.toLowerCase());
                     
-                     if (data.casedecision.toLowerCase() == 'activation'||
+                     if (data.casedecision.toLowerCase() == 'reactivation'||
                         data.casedecision.toLowerCase() == 'no revoke'
                         ) {
                             $('.btn-reviewer-green').show();
@@ -337,7 +339,8 @@
 
                     curcaseid = staffdata[0].caseid;
 
-
+                    curstaffid = staffid;
+                    
                     plotStaff(curloc, riskloc, risklab, riskdistance, true);
 
                     extractStaffDetail(curcaseid, staffid, staffname);
@@ -372,6 +375,8 @@
             var dist2risk = $element.dist2RiskAddr;
 
             curcaseid = $element.caseid;
+            
+            curstaffid = staffid;
 
 
             globalview = false;
@@ -537,22 +542,28 @@
             var caseresult = null;
             var submitnote = null;
             //            edit for multiple page
-            if (pagetype == "myInvestigation") {
-                caseresult = $("#" + pagesubtype + " option:selected").text();
+            if (pagetype == "myInvestigation" || pagetype == "myRevoke") {
+                caseresult = $("#" + pagesubtype + "Result option:selected").text();
                 submitnote = $("#" + pagesubtype + "Notes").val();
             };
 
-            //                if (pagesubtype == "nonresp") {
-            //                    caseresult = $("#nonrespResult option:selected").text();
-            //                    submitnote = $("#nonrespNotes").val();
-            //                }
-
+            if (pagetype == "myReview") {
+                caseresult = $("#" + pagesubtype + "Result").val();
+                submitnote = $("#" + pagesubtype + "ReviewNotes").val();
+            };
+            
+            
+            if (pagetype == "myAction") {
+                caseresult = $("#" + pagesubtype + "Result").val();
+                submitnote = null;
+            };            
 
             var json = {
                 "caseid": curcaseid,
-                "uid": uid,
+                "staffid": curstaffid,
                 "result": caseresult,
                 "decision": submitdecision,
+                "submitteruid": uid,
                 "submitternotes": submitnote
             };
             return json;
@@ -668,6 +679,7 @@
         var submitdecision = null;
 
         var curcaseid = null;
+        var curstaffid = null;
 
         var submitpanel = null;
 
