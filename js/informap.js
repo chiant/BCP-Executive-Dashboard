@@ -541,11 +541,23 @@
 
             var caseresult = null;
             var submitnote = null;
+            var submitpage = null;
+            var submitsubpage = null;
+            
+            submitpage = pagetype;
+            submitsubpage = pagesubtype;
+            
             //            edit for multiple page
-            if (pagetype == "myInvestigation" || pagetype == "myRevoke") {
+            if (pagetype == "myInvestigation") {
                 caseresult = $("#" + pagesubtype + "Result option:selected").text();
                 submitnote = $("#" + pagesubtype + "Notes").val();
+                submitpage = "myInvestigation";
             };
+            
+            if (pagetype == "myRevoke") {
+                caseresult = $("#" + pagesubtype + "Result option:selected").text();
+                submitnote = $("#" + pagesubtype + "Notes").val();
+            };            
 
             if (pagetype == "myReview") {
                 caseresult = $("#" + pagesubtype + "Result").val();
@@ -564,7 +576,9 @@
                 "result": caseresult,
                 "decision": submitdecision,
                 "submitteruid": uid,
-                "submitternotes": submitnote
+                "submitternotes": submitnote,
+                "submitpage": submitpage,
+                "submitsubpage": submitsubpage                
             };
             return json;
         }
@@ -588,6 +602,7 @@
             var navAllCaseNum = null;
             var navSubCaseNum = null;
             var navAllCaseVar = null;
+                //            edit for multiple page
 
             if (pagetype == "myInvestigation") {
                 navAllCaseVar = 'totcase';
@@ -609,13 +624,18 @@
                 newtot = window.parent.frames['nav'].totaction;
             };
 
-            if (pagetype == "myInvestigation" || pagetype == "myReview" || pagetype == "myAction") {
+                //            edit for multiple page
+            
+           if (pagetype == "myInvestigation" || pagetype == "myReview" || pagetype == "myAction") {
 
                 navAllCaseNum = $(window.parent.frames['nav'].document.getElementById(navAllCaseVar));
                 if (newtot > 0) {
-                    $(navAllCaseNum).html(newtot);
+                   $(navAllCaseNum).show();
+                   $(navAllCaseNum).html(newtot);
                 } else {
                     $(navAllCaseNum).html("");
+                    $(navAllCaseNum).hide();
+
                 };
 
                 //            edit for multiple page
@@ -623,9 +643,11 @@
                 navSubCaseNum = (window.parent.frames['nav'].document.getElementById(pagesubtype));
 
                 if (staffnum > 0) {
-                    $(navSubCaseNum).html(staffnum);
+                     $(navSubCaseNum).show();
+                     $(navSubCaseNum).html(staffnum);
                 } else {
-                    $(navSubCaseNum).html("");
+                     $(navSubCaseNum).html("");
+                     $(navSubCaseNum).hide();
                 };
             };
 

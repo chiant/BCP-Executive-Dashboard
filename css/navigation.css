@@ -12243,5 +12243,7 @@ body.sidebar-toggled footer.sticky-footer {
     padding: .4em;
 }
 
-
+.nav-item {
+    display: none;
+}
 

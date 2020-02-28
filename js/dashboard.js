@@ -79,7 +79,7 @@
                 geo: {
                     map: 'china',
                     roam: true,
-                    zoom: 1.3,
+                    zoom: 1.1,
                     label: {
                         emphasis: {
                             show: false

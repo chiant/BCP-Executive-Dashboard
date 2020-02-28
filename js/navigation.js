@@ -46,25 +46,341 @@ function loadNavData(loadURL) {
         reviewlist = data.reviewlist;
         totaction = data.totaction;
         actionlist = data.actionlist;
-        
 
-        if (totcase>0 ) {$('#totcase').html(totcase)}
-        if (nonresp>0 ) {$('#nonresp').html(nonresp)};
-        if (healthcase>0 ) {$('#healthcase').html(healthcase)};
-        if (closecontact>0 ) {$('#closecontact').html(closecontact)};
-        if (hadcontact>0 ) {$('#hadcontact').html(hadcontact)};
-        if (curinhubei>0 ) {$('#curinhubei').html(curinhubei)};
-        if (beenhubei>0 ) {$('#beenhubei').html(beenhubei)};
-        if (backhubei>0 ) {$('#backhubei').html(backhubei)};
-        if (totreview>0 ) {$('#totreview').html(totreview)};
-        if (reviewlist>0 ) {$('#reviewlist').html(reviewlist)};
-        if (totaction>0 ) {$('#totaction').html(totaction)};
-        if (actionlist>0 ) {$('#actionlist').html(actionlist)};
+
+        if (totcase > 0) {
+            $('#totcase').show();
+            $('#totcase').html(totcase);
+        } else {
+            $('#totcase').hide();
+        };
+        if (nonresp > 0) {
+            $('#nonresp').show();
+            $('#nonresp').html(nonresp);
+        } else {
+            $('#nonresp').hide();
+        };
+        if (healthcase > 0) {
+            $('#healthcase').show();
+            $('#healthcase').html(healthcase);
+        } else {
+            $('#healthcase').hide();
+        };
+        if (closecontact > 0) {
+            $('#closecontact').show();
+            $('#closecontact').html(closecontact);
+        } else {
+            $('#closecontact').hide();
+        };
+        if (hadcontact > 0) {
+            $('#hadcontact').show();
+            $('#hadcontact').html(hadcontact);
+        } else {
+            $('#hadcontact').hide();
+        };
+        if (curinhubei > 0) {
+            $('#curinhubei').show();
+            $('#curinhubei').html(curinhubei);
+        } else {
+            $('#curinhubei').hide();
+        };
+        if (beenhubei > 0) {
+            $('#beenhubei').show();
+            $('#beenhubei').html(beenhubei);
+        } else {
+            $('#beenhubei').hide();
+        };
+        if (backhubei > 0) {
+            $('#backhubei').show();
+            $('#backhubei').html(backhubei);
+        } else {
+            $('#backhubei').hide();
+        };
+        if (totreview > 0) {
+            $('#totreview').show();
+            $('#totreview').html(totreview);
+        } else {
+            $('#totreview').hide();
+        };
+        if (reviewlist > 0) {
+            $('#reviewlist').show();
+            $('#reviewlist').html(reviewlist);
+        } else {
+            $('#reviewlist').hide();
+        };
+        if (totaction > 0) {
+            $('#totaction').show();
+            $('#totaction').html(totaction);
+        } else {
+            $('#totaction').hide();
+        };
+        if (actionlist > 0) {
+            $('#actionlist').show();
+            $('#actionlist').html(actionlist);
+        } else {
+            $('#actionlist').hide();
+        };
+
+
     });
 
 };
 
-
+function assignPortalAccess() {
+//    admin
+    if (urole == 1) {
+        accessctr = {
+            "maindashdrill": 1,
+            "submitinvestigate": 1,
+            "submitcasereview": 1,
+            "submitrevokerequest": 1,
+            "submitreactivaterequest": 1,
+            "submitreactivatereview": 1,
+            "submitactiondone": 1,
+            "revokestaff": "all",
+            "reactivatestaff": "all",
+            "searchstaff": "all",
+            
+           
+            "menusshow": [
+                {
+                    "menuname": "masterDash",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "userDash",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myInvest",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "myMonito",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "searchStaff",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "myRevoke",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "myReview",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "myAction",
+                    "menuvis": 1
+                }
+        ]
+        };
+    };
+//    investigator
+    if (urole == 2) {
+        accessctr = {
+            "maindashdrill": 0,
+            "submitinvestigate": 1,
+            "submitcasereview": 1,
+            "submitrevokerequest": 1,
+            "submitreactivaterequest": 1,
+            "submitreactivatereview": 1,
+            "submitactiondone": 1,
+            "revokestaff": "team",
+            "reactivatestaff": "team",
+            "searchstaff": "team",
+            
+           
+            "menusshow": [
+                {
+                    "menuname": "masterDash",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "userDash",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "myInvest",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "myMonito",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "searchStaff",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "myRevoke",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "myReview",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myAction",
+                    "menuvis": 0
+                }
+        ]
+        };
+    };
+ 
+//    BM
+    if (urole == 3) {
+        accessctr = {
+            "maindashdrill": 1,
+            "submitinvestigate": 1,
+            "submitcasereview": 1,
+            "submitrevokerequest": 1,
+            "submitreactivaterequest": 1,
+            "submitreactivatereview": 1,
+            "submitactiondone": 1,
+            "revokestaff": "all",
+            "reactivatestaff": "all",
+            "searchstaff": "all",
+            
+           
+            "menusshow": [
+                {
+                    "menuname": "masterDash",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "userDash",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myInvest",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "myMonito",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "searchStaff",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "myRevoke",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "myReview",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "myAction",
+                    "menuvis": 1
+                }
+        ]
+        };
+    };
+    
+//    cao, reactivate approver
+    if (urole == 5) {
+        accessctr = {
+            "maindashdrill": 1,
+            "submitinvestigate": 0,
+            "submitcasereview": 0,
+            "submitrevokerequest": 0,
+            "submitreactivaterequest": 0,
+            "submitreactivatereview": 0,
+            "submitactiondone": 0,
+            "revokestaff": "none",
+            "reactivatestaff": "none",
+            "searchstaff": "all",
+            "menusshow": [
+                {
+                    "menuname": "masterDash",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "userDash",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myInvest",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myMonito",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "searchStaff",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "myRevoke",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myReview",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "myAction",
+                    "menuvis": 0
+                }
+        ]
+        };
+    };    
+//    physical security, revoke & reactivate executor
+    if (urole == 6) {
+        accessctr = {
+            "maindashdrill": 1,
+            "submitinvestigate": 0,
+            "submitcasereview": 0,
+            "submitrevokerequest": 0,
+            "submitreactivaterequest": 0,
+            "submitreactivatereview": 0,
+            "submitactiondone": 1,
+            "revokestaff": "none",
+            "reactivatestaff": "none",
+            "searchstaff": "all",
+            "menusshow": [
+                {
+                    "menuname": "masterDash",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "userDash",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myInvest",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myMonito",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "searchStaff",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "myRevoke",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myReview",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myAction",
+                    "menuvis": 1
+                }
+        ]
+        };
+    };    
+};
 var uid = null;
 var urole = null;
 var uname = null;
@@ -88,6 +404,8 @@ var actionlist = null;
 
 var navdatalink = null;
 
+var assignAccess = null;
+
 
 $(function () {
 
@@ -99,24 +417,20 @@ $(function () {
     if (uname != null) {
         $('#usrnm').html(uname);
     }
-
-    if (urole == "admin") {
-        $('#userDash').hide();
-    }
-
-    if (urole == "investigator") {
-        $('#myReview').hide();
-    }
-
-    if (urole == "cao") {
-        $('#userDash').hide();
-        $('#myInvest').hide();
-        $('#myRevoke').hide();
-    }
     
+    assignPortalAccess();
+    
+    for (var i=0;i<accessctr.menusshow.length;i++){
+        if (accessctr.menusshow[i].menuvis == 1) {
+            $('#'+accessctr.menusshow[i].menuname).show();
+        } else {
+            $('#'+accessctr.menusshow[i].menuname).hide();
+        }
+    };
+
     navdatalink = '../json/nav.json';
-//    navdatalink = 'http://serverlink?userid=' + uid;
-//    only uid required for parameter
+    //    navdatalink = 'http://serverlink?userid=' + uid;
+    //    only uid required for parameter
     loadNavData(navdatalink);
 
 });
