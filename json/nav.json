@@ -1,17 +1,70 @@
 {
     "userid": "U000111",
     "username": "Brian Sun",
-    "totcase": 10,
-    "nonresp": 10,
-    "healthcase": 5,
-    "closecontact": 10,
-    "hadcontact": 10,
-    "curinhubei": 0,
-    "beenhubei": 10,
-    "backhubei": 10,
-    "totreview": 50,
-    "reviewlist": 50,
-    "totaction": 30,
-    "actionlist": 30
+    "summary": [
+        {"stat": "totcase",
+         "value": 10    
+        },
+         {"stat": "nonresp",
+         "value": 10    
+        },
+          {"stat": "healthcase",
+         "value": 10    
+        },
+          {"stat": "closecontact",
+         "value": 10    
+        },
+          {"stat": "hadcontact",
+         "value": 10    
+        },
+          {"stat": "curinhubei",
+         "value": 10    
+        },
+          {"stat": "beenhubei",
+         "value": 10    
+        },
+          {"stat": "backhubei",
+         "value": 10    
+        },
+          {"stat": "totreview",
+         "value": 10    
+        },
+          {"stat": "reviewlist",
+         "value": 10    
+        },
+          {"stat": "totaction",
+         "value": 10    
+        },
+          {"stat": "actionlist",
+         "value": 10    
+        },
+ 
+        
+          {"stat": "monitorhealthcase",
+         "value": 10    
+        },
+          {"stat": "monitorclosecontact",
+         "value": 20    
+        },
+          {"stat": "monitorhadcontact",
+         "value": 60    
+        },
+          {"stat": "monitorcurinhubei",
+         "value": 20    
+        },
+          {"stat": "monitorbeenhubei",
+         "value": 15    
+        },
+          {"stat": "monitorbackhubei",
+         "value": 0    
+        },
+          {"stat": "monitorstafftravel",
+         "value": 10    
+        },
+          {"stat": "monitorclose2risky",
+         "value": 100    
+        }        
     
+    ]
+  
 }

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>My Support Center</title>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+
+    <link rel="shortcut icon" href="./img/favicon.ico">
+
+</head>
+<style>
+    body {
+        height: 100%;
+        margin: 4rem
+    }
+
+    h4 {
+        margin: 2rem
+    }
+
+    button[disabled] {
+        color: white !important;
+        border-color: gray !important;
+        background-color: gray !important
+    }
+
+    button[disabled]:hover {
+        cursor: default;
+        color: white !important;
+        border-color: gray !important;
+        background-color: gray !important
+    }
+</style>
+
+<body>
+
+
+    <img src="../img/technical%20support.png" class="rounded mx-auto d-block" width="20%" alt="...">
+
+
+    <div id="backhubei" class="input-area">
+        <h4 class="text-center"><strong>My Support Center</strong></h4>
+        <div class="container" style="width:70%">
+            <form>
+                <div class="form-group">
+                    <label for="feedbacknote" class="notes">Feedback to GAC D&A (Guangzhou) Team:</label>
+                    <textarea id="feedbacknote" class="form-control note-field" rows="6" placeholder="Please report any bug or issue of the tool, share your user experience (no matter good or bad), or provide any ideas & suggestions for improving the tool. Your feedback is much appreciated!"></textarea>
+                </div>
+
+                <div class="row">
+                    <button type="button" id="submitfeedback" class="col-md-6 mx-auto btn-primary" disabled="disabled">Submit Your Feedback</button>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="successSubmit" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalSubmitTitle">Submission Status</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="submitPrompt" style="background-color:deepskyblue">Your feedback has been well received! thank you!</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.4.1/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        var uid = null;
+        var urole = null;
+        var uname = null;
+
+        uid = window.parent.userid;
+        urole = window.parent.userrole;
+        uname = window.parent.username;
+
+
+        $('#submitfeedback').click(function() {
+
+            $.ajax({
+                type: "POST",
+                url: "http://127.0.0.1:60036/nCoV%20monitoring/",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(compileJsonData()),
+                dataType: "json",
+                success: function(message) {
+                    if (message > 0) {
+                        $("#submitfeedback").attr('disabled', true);
+                        $("#feedbacknote").val("");
+                        
+                        $('#successSubmit').modal('show');
+
+                    }
+                },
+                error: function(message) {
+                    $("#submitPrompt").html("server is busy, please try again!");
+
+                    $('#successSubmit').modal('show');
+
+                    // this is for offline testing, remove submitDone() of next line when promote online
+                }
+            });
+
+        });
+
+        function compileJsonData() {
+
+            var submitnote = null;
+            var submitpage = null;
+            var submitsubpage = null;
+
+            submitpage = "supportCenter";
+            submitsubpage = "";
+            submitnote = $("#feedbacknote").val();
+
+
+
+            var json = {
+                "submitteruid": uid,
+                "submitternotes": submitnote,
+                "submitpage": submitpage,
+                "submitsubpage": submitsubpage
+            };
+            return json;
+        }
+
+
+
+        $("#feedbacknote").bind('input propertychange', function() {
+
+            if ($("#feedbacknote").val().length > 1) {
+                $("#submitfeedback").attr('disabled', false);
+            } else {
+                $("#submitfeedback").attr('disabled', true);
+
+            }
+
+        });
+    </script>
+
+
+</body></html>

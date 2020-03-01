@@ -1,18 +1,19 @@
         var mainMapObj = null;
         var surveyStatObj = null;
         var workStatusObj = null;
-        var riskFactorObj = null; 
+        var riskFactorObj = null;
 
-            mainMapObj = echarts.init(document.getElementById("mainMap"));
-            surveyStatObj = echarts.init(document.getElementById("surveyStat"));
-            workStatusObj = echarts.init(document.getElementById("workStatus"));
-            riskFactorObj = echarts.init(document.getElementById("riskFactor"));            
+        mainMapObj = echarts.init(document.getElementById("mainMap"));
+        surveyStatObj = echarts.init(document.getElementById("surveyStat"));
+        workStatusObj = echarts.init(document.getElementById("workStatus"));
+        riskFactorObj = echarts.init(document.getElementById("riskFactor"));
 
 
-    function getUrlParam(name) {
+        function getUrlParam(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-            if (r != null) return unescape(r[2]); return null; //返回参数值
+            var r = window.location.search.substr(1).match(reg); //匹配目标参数
+            if (r != null) return unescape(r[2]);
+            return null; //返回参数值
         }
 
         var convertData = function (data) {
@@ -44,14 +45,14 @@
                     }
 
                 },
-                
+
                 grid: {
                     left: '0%',
                     right: '0%',
                     top: '0%',
                     bottom: '0%',
                     containLabel: false
-                },            
+                },
                 tooltip: {
                     trigger: 'item',
                     formatter: function (params) {
@@ -196,10 +197,10 @@
                             normal: {
                                 color: 'rgba(0,123,255, .6)'
                             },
-                              emphasis: {
+                            emphasis: {
                                 color: 'rgba(0,123,255, 1)'
-                           }
-                    },
+                            }
+                        },
                         data: []
                 }
             ]
@@ -248,9 +249,9 @@
                             normal: {
                                 color: 'rgba(0,123,255, .6)'
                             },
-                             emphasis: {
+                            emphasis: {
                                 color: 'rgba(0,123,255, 1)'
-                           }
+                            }
                         },
                         data: []
                 }
@@ -300,9 +301,9 @@
                             normal: {
                                 color: 'rgba(0,123,255, .6)'
                             },
-                             emphasis: {
+                            emphasis: {
                                 color: 'rgba(0,123,255, 1)'
-                           }
+                            }
                         },
                         data: []
                 }
@@ -366,14 +367,14 @@
                 if (mainMapOptUpdate && typeof mainMapOptUpdate === "object") {
                     mainMapObj.setOption(mainMapOptUpdate);
                 };
-                
+
                 $('#confirmedInfection').html(data.confirmedInfection);
                 $('#staffUnderRisk').html(data.staffUnderRisk);
                 $('#accessRevoked').html(data.accessRevoked);
                 $('#underQuarantine').html(data.underQuarantine);
 
                 $('#mapFilter').html("All Staff");
-                
+
                 $(window.parent.footer.document).find("#reportDate").html("Data as" + " " + data.reportDate);
 
             });
@@ -393,8 +394,8 @@
                 if (mainMapOptUpdate && typeof mainMapOptUpdate === "object") {
                     mainMapObj.setOption(mainMapOptUpdate);
                 }
-                
-            
+
+
             });
 
         };
@@ -416,9 +417,12 @@
         $('.kpi').click(function () {
             var kpicontent = this.id;
             var mapPageLink = null;
-//            mapPageLink = mapPageAPILink + '?keyfield1=KPI&keyvalue1=' + kpicontent + '&keyfield2=vp&keyvalue2=' + vp;
-            mapPageLink = mapPageAPILink + '?viewtype=dash' + vpsel + '&viewvalue=KPI&selitem=' + kpicontent;
-           window.open(mapPageLink,"viewpage");
+            //            mapPageLink = mapPageAPILink + '?keyfield1=KPI&keyvalue1=' + kpicontent + '&keyfield2=vp&keyvalue2=' + vp;
+            if (vpsel == 'user' || (vpsel == 'all' && drillable == 1)) {
+                mapPageLink = mapPageAPILink + '?viewtype=dash' + vpsel + '&viewvalue=KPI&selitem=' + kpicontent;
+                window.open(mapPageLink, "viewpage");
+            }
+
         });
 
 
@@ -426,16 +430,18 @@
 
         mainMapObj.on('click', function (parmas) {
 
-            if (parmas.componentSubType == 'scatter') {
+            if (parmas.componentSubType == 'scatter' &&
+                (vpsel == 'user' ||
+                    (vpsel == 'all' && drillable == 1))) {
                 var citynm = parmas.name;
-                var nstaff=parmas.value[2];
+                var nstaff = parmas.value[2];
                 var mapfilter = $('#mapFilter').html();
-                
+
                 var mapPageLink = null;
-//                mapPageLink = mapPageAPILink + '?keyfield1=city&keyvalue1=' + citynm + '&keyfield2=vp&keyvalue2=' + vp + 'keyfield3=mapfilter&keyvalue3=' + mapfilter;
+                //                mapPageLink = mapPageAPILink + '?keyfield1=city&keyvalue1=' + citynm + '&keyfield2=vp&keyvalue2=' + vp + 'keyfield3=mapfilter&keyvalue3=' + mapfilter;
                 mapPageLink = mapPageAPILink + '?viewtype=dash' + vpsel + '&viewvalue=Map&selitem=' + citynm + '&selfilter=' + mapfilter;
 
-                window.open(mapPageLink,"viewpage");
+                window.open(mapPageLink, "viewpage");
 
             }
 
@@ -443,14 +449,18 @@
         });
 
         surveyStatObj.on('click', function (parmas) {
-            if (parmas.componentSubType == 'bar') {
+            if (parmas.componentSubType == 'bar' &&
+                (vpsel == 'user' ||
+                    (vpsel == 'all' && drillable == 1)))
+
+            {
                 var surveyStatBar = parmas.name;
 
                 var mapPageLink = null;
-//                mapPageLink = mapPageAPILink + '?keyfield1=surveyStatBar&keyvalue1=' + surveyStatBar + '&keyfield2=vp&keyvalue2=' + vp;
+                //                mapPageLink = mapPageAPILink + '?keyfield1=surveyStatBar&keyvalue1=' + surveyStatBar + '&keyfield2=vp&keyvalue2=' + vp;
                 mapPageLink = mapPageAPILink + '?viewtype=dash' + vpsel + '&viewvalue=surveyStatBar&selitem=' + surveyStatBar;
 
-                window.open(mapPageLink,"viewpage");
+                window.open(mapPageLink, "viewpage");
 
             }
 
@@ -458,28 +468,32 @@
 
 
         workStatusObj.on('click', function (parmas) {
-            if (parmas.componentSubType == 'bar') {
+            if (parmas.componentSubType == 'bar' &&
+                (vpsel == 'user' ||
+                    (vpsel == 'all' && drillable == 1))) {
                 var workStatusBar = parmas.name;
 
                 var mapPageLink = null;
-//                mapPageLink = mapPageAPILink + '?keyfield1=workStatusBar&keyvalue1=' + workStatusBar + '&keyfield2=vp&keyvalue2=' + vp;
+                //                mapPageLink = mapPageAPILink + '?keyfield1=workStatusBar&keyvalue1=' + workStatusBar + '&keyfield2=vp&keyvalue2=' + vp;
                 mapPageLink = mapPageAPILink + '?viewtype=dash' + vpsel + '&viewvalue=workStatusBar&selitem=' + workStatusBar;
 
-                window.open(mapPageLink,"viewpage");
+                window.open(mapPageLink, "viewpage");
 
             }
 
         });
 
         riskFactorObj.on('click', function (parmas) {
-            if (parmas.componentSubType == 'bar') {
+            if (parmas.componentSubType == 'bar' &&
+                (vpsel == 'user' ||
+                    (vpsel == 'all' && drillable == 1))) {
                 var riskFactorBar = parmas.name;
 
                 var mapPageLink = null;
-//                mapPageLink = mapPageAPILink + '?keyfield1=riskFactorBar&keyvalue1=' + riskFactorBar + '&keyfield2=vp&keyvalue2=' + vp;
+                //                mapPageLink = mapPageAPILink + '?keyfield1=riskFactorBar&keyvalue1=' + riskFactorBar + '&keyfield2=vp&keyvalue2=' + vp;
                 mapPageLink = mapPageAPILink + '?viewtype=dash' + vpsel + '&viewvalue=riskFactorBar&selitem=' + riskFactorBar;
 
-                window.open(mapPageLink,"viewpage");
+                window.open(mapPageLink, "viewpage");
 
             }
 
@@ -506,22 +520,25 @@
         var surveyStatOptUpdate = null;
         var workStatusOptUpdate = null;
         var riskFactorOptUpdate = null;
-    
+
         var maxPointPlot = 100;
 
+        var drillable = 0;
+
         $(function () {
-            
+
 
             uid = window.parent.userid;
             urole = window.parent.userrole;
-           
-          
-            vpsel=getUrlParam("viewtype");//all & user
+            drillable = window.parent.frames['nav'].maindashdrill;
+
+
+            vpsel = getUrlParam("viewtype"); //all & user
             if (vpsel == "user") {
                 vpsel == uid;
                 $("#overviewTitle").html("My Team Overview");
             } else {
-                 $("#overviewTitle").html("GSC China Overview");               
+                $("#overviewTitle").html("GSC China Overview");
             }
 
 
@@ -540,7 +557,7 @@
             if (riskFactorOpt && typeof riskFactorOpt === "object") {
                 riskFactorObj.setOption(riskFactorOpt, true);
             }
-            
+
             $('#mapFilter').html("All Staff");
 
 
