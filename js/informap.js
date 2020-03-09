@@ -145,6 +145,9 @@
 
             $.getJSON(detailAPIlink).done(function (data) {
                 //                curcaseid = data.caseid;
+                if (data.riskAssess[4].value == 'Yes') {
+                    revoke_flag = 1;
+                };
 
                 $('#detailInfo').show();
                 $('#nameTitle').html(staffname);
@@ -153,7 +156,7 @@
                 $('#riskAssess').bootstrapTable('load', data.riskAssess);
                 $('#history').bootstrapTable('load', data.history);
 
-                if (data.riskAssess[4].value == 'Yes') {
+                if (revoke_flag) {
                     $('#revokeMarker').show();
                 } else {
                     $('#revokeMarker').hide();
@@ -162,11 +165,13 @@
                 if (data.caseselfreport != '' & data.caseselfreport != null) {
                     $('.self-report').html('Self-report: ' + data.caseselfreport);
                     $('.self-report').show();
-
+                    $('#selfCaseReport').html('Self-report: ' + data.caseselfreport);
+                    $('#selfCaseReport').show();
                 } else {
                     $('.self-report').html("");
                     $('.self-report').hide();
-                }
+                    $('.self-selfCaseReport').html("");
+                    $('.self-selfCaseReport').hide();                }
 
                 $('.case-title').html('case#: ' + data.caseid + ', ' + data.casetype + ', ' + staffname + ', ' + data.casedate);
 
@@ -178,6 +183,10 @@
 
 
                 $('.investigator').html('by ' + uname);
+                
+                if (pagesubtype == "nonresp" && revoke_flag) {
+                    $(".btn-green").hide();
+                };
 
 
                 if (pagetype == "myInvestigation" && pagesubtype == "viewcompletecase") {
@@ -401,6 +410,9 @@
                 } else {
                     $(".btn-green").hide();
                     $(".notes").html("*Notes:");
+                };
+                if (pagesubtype == "nonresp" && revoke_flag) {
+                    $(".btn-green").hide();
                 };
             }
 
@@ -705,6 +717,9 @@
 
         var submitpanel = null;
 
+        var revoke_flag = null;
+
+        revoke_flag = 0;    
 
         globalview = true;
         submitpanel = false;

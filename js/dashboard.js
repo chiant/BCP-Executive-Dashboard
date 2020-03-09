@@ -261,7 +261,7 @@
 
             riskFactorOpt = {
                 title: {
-                    text: 'Staff Under Monitoring',
+                    text: 'Pending Revoke',
                     left: 'center',
                     textStyle: {
                         fontFamily: 'Arial Narrow',
