@@ -440,20 +440,6 @@ var uname = null;
 var curactive = null;
 var cursubactive = null;
 
-var totcase = null;
-var nonresp = null;
-var healthcase = null;
-var closecontact = null;
-var hadcontact = null;
-var curinhubei = null;
-var beenhubei = null;
-var backhubei = null;
-var totreview = null;
-var reviewlist = null;
-var totaction = null;
-var actionlist = null;
-
-
 
 var assignAccess = null;
 

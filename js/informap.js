@@ -371,7 +371,7 @@
                     }
                 };
                 
-                if (staffnum == 0) {
+                if (staffnum == 0 || staffnum == null) {
                     $('.input-area').hide();
                 } 
 
@@ -503,7 +503,7 @@
                 //            edit for multiple page, odds number: notes required
                 //                if (pagesubtype = 'nonresp') 
                 if ($("#" + pagesubtype + "Result").val() > 0) {
-                    if ($("#" + pagesubtype + "Result").val() % 2 == 0 || pagesubtype == 'outsidework') {
+                    if ($("#" + pagesubtype + "Result").val() % 2 == 0) {
                         vaildform = true;
                         
                     } else {
@@ -623,11 +623,10 @@
             staffnum = staffnum - 1;
             $('#staffselnum').html('staff selected: ' + staffnum);
             
+            
              if (staffnum == 0) {
                     $('.input-area').hide();
-                } else {                    
-                     $('.input-area').show();
-               };
+                };
 
 
             var newtot = null;
@@ -638,30 +637,24 @@
 
             if (pagetype == "myInvestigation") {
                 navAllCaseVar = 'totcase';
-                window.parent.frames['nav'].totcase = window.parent.frames['nav'].totcase - 1;
-                newtot = window.parent.frames['nav'].totcase;
-
             };
 
             if (pagetype == "myReview") {
                 navAllCaseVar = 'totreview';
-                window.parent.frames['nav'].totreview = window.parent.frames['nav'].totreview - 1;
-                newtot = window.parent.frames['nav'].totreview;
             };
 
 
             if (pagetype == "myAction") {
                 navAllCaseVar = 'totaction';
-                window.parent.frames['nav'].totaction = window.parent.frames['nav'].totaction - 1;
-                newtot = window.parent.frames['nav'].totaction;
             };
-
+            
                 //            edit for multiple page
             
            if (pagetype == "myInvestigation" || pagetype == "myReview" || pagetype == "myAction") {
 
                 navAllCaseNum = $(window.parent.frames['nav'].document.getElementById(navAllCaseVar));
-                if (newtot > 0) {
+                newtot = $(navAllCaseNum).html() - 1;
+                if (newtot > 0) {                       
                    $(navAllCaseNum).show();
                    $(navAllCaseNum).html(newtot);
                 } else {
@@ -800,9 +793,9 @@
                 if (pagesubtype == 'beenhubei') {
                     infotitle = 'Been in Hubei/Oversea';
                 };
-                if (pagesubtype == 'backhubei') {
-                    infotitle = 'Back from Hubei/Oversea';
-                };
+//                if (pagesubtype == 'backhubei') {
+//                    infotitle = 'Back from Hubei/Oversea';
+//                };
                 if (pagesubtype == 'outsidework') {
                     infotitle = 'Outside GZ/FS';
                 };
