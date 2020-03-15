@@ -90,7 +90,9 @@
         };
 
         function plotStaff(loc1, loc2, lab2, distance, drawline) {
-            drawStaffLoc(loc1);
+            if (loc1[0] != 0 && loc1[1] != 0) {
+             drawStaffLoc(loc1);
+            }
 
             if (distance <= maxDistance2plot) {
                 drawRiskLoc(loc2, lab2);
@@ -147,7 +149,10 @@
                 //                curcaseid = data.caseid;
                 if (data.riskAssess[4].value == 'Yes') {
                     revoke_flag = 1;
+                } else {
+                    revoke_flag = 0;  
                 };
+                
 
                 $('#detailInfo').show();
                 $('#nameTitle').html(staffname);
@@ -170,8 +175,9 @@
                 } else {
                     $('.self-report').html("");
                     $('.self-report').hide();
-                    $('.self-selfCaseReport').html("");
-                    $('.self-selfCaseReport').hide();                }
+                    $('#selfCaseReport').html("");
+                    $('#selfCaseReport').hide();                
+                }
 
                 $('.case-title').html('case#: ' + data.caseid + ', ' + data.casetype + ', ' + staffname + ', ' + data.casedate);
 
@@ -207,8 +213,11 @@
 
                 if (pagetype == "myRevoke") {
                     $('.self-report').hide();
-
-                    $('.investigator').html('by ' + data.casesubmitter);
+                    if (pagesubtype == 'requestInProgress' || pagesubtype == 'viewHistRequest'){
+                           $('.investigator').html('by ' + data.casesubmitter);                 
+                    } else {
+                           $('.investigator').html('by ' + uname);                 
+                    };
                     if (pagesubtype == "revokeRequest") {
                         $('.case-title').html('Request to Revoke Access for ' + staffname);
                     };
@@ -360,7 +369,11 @@
                     } else {
                         $('#notPlot').hide();
                     }
-                }
+                };
+                
+                if (staffnum == 0) {
+                    $('.input-area').hide();
+                } 
 
                 map.setFitView();
             });
@@ -490,8 +503,9 @@
                 //            edit for multiple page, odds number: notes required
                 //                if (pagesubtype = 'nonresp') 
                 if ($("#" + pagesubtype + "Result").val() > 0) {
-                    if ($("#" + pagesubtype + "Result").val() % 2 == 0) {
+                    if ($("#" + pagesubtype + "Result").val() % 2 == 0 || pagesubtype == 'outsidework') {
                         vaildform = true;
+                        
                     } else {
                         if ($("#" + pagesubtype + "Notes").val().length > 10) {
                             vaildform = true;
@@ -608,6 +622,12 @@
 
             staffnum = staffnum - 1;
             $('#staffselnum').html('staff selected: ' + staffnum);
+            
+             if (staffnum == 0) {
+                    $('.input-area').hide();
+                } else {                    
+                     $('.input-area').show();
+               };
 
 
             var newtot = null;
@@ -775,13 +795,16 @@
                     infotitle = 'Had Contact';
                 };
                 if (pagesubtype == 'curinhubei') {
-                    infotitle = 'Current in Hubei/Wenzhou';
+                    infotitle = 'Current in Hubei/Oversea';
                 };
                 if (pagesubtype == 'beenhubei') {
-                    infotitle = 'Been in Hubei/Wenzhou';
+                    infotitle = 'Been in Hubei/Oversea';
                 };
                 if (pagesubtype == 'backhubei') {
-                    infotitle = 'Back from Hubei/Wenzhou';
+                    infotitle = 'Back from Hubei/Oversea';
+                };
+                if (pagesubtype == 'outsidework') {
+                    infotitle = 'Outside GZ/FS';
                 };
                 if (pagesubtype == 'viewcompletecase') {
                     infotitle = 'View Submitted Cases';
@@ -885,13 +908,13 @@
             };
 
 
-
-
-
             if (pagetype == "myRevoke") {
-                $('#staffListTbl').bootstrapTable('hideColumn', 'caseid');
                 $('#staffListTbl').bootstrapTable('hideColumn', 'risktype');
-
+                $('#staffListTbl').bootstrapTable('hideColumn', 'revokeReason');
+                if (pagesubtype == "revokeRequest" || pagesubtype == "reactivationRequest") {
+                 $('#staffListTbl').bootstrapTable('hideColumn', 'caseid');
+                 $('#staffListTbl').bootstrapTable('hideColumn', 'casedate'); 
+                };
             } else {
                 $('#staffListTbl').bootstrapTable('hideColumn', 'revokeReason');
             };

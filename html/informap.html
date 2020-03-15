@@ -188,8 +188,8 @@
                     <label for="hadcontactResult">*Investigation Result</label>
                     <select id="hadcontactResult" class="form-control result-sel" name="result">
                         <option value=null style="display: none"></option>
-                        <option value=2>has not had contact with Hubei/Wenzhou people</option>
-                        <option value=1>Confirmed had contact with Hubei/Wenzhou people</option>
+                        <option value=2>has not had contact with Hubei/Oversea people</option>
+                        <option value=1>Confirmed had contact with Hubei/Oversea people</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -206,7 +206,7 @@
             </form>
         </div> 
     </div>   
-     <!--    My investigation center: currently in Hubei/Wenzhou-->
+     <!--    My investigation center: currently in Hubei/Oversea-->
     <div id="curinhubei" class="input-area">
         <h3 class="text-center"><strong>Investigation Result Submission</strong></h3>
         <h4 class="text-center case-title"></h4>
@@ -217,13 +217,13 @@
                     <label for="curinhubeiResult">*Investigation Result</label>
                     <select id="curinhubeiResult" class="form-control result-sel" name="result">
                         <option value=null style="display: none"></option>
-                        <option value=2>Not in Hubei/Wenzhou Now</option>
-                        <option value=1>Confirmed in Hubei/Wenzhou Now</option>
+                        <option value=2>Not in Hubei/Oversea Now</option>
+                        <option value=1>Confirmed in Hubei/Oversea Now</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="curinhubeiNotes" class="notes">Notes</label>
-                    <textarea id="curinhubeiNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="Mandatory field if confirmed in Hubei/Wenzhou now, please provide information such as start date of physically being in Hubei/Wenzhou, reason for staying there, current health status, etc."></textarea>
+                    <textarea id="curinhubeiNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="Mandatory field if confirmed in Hubei/Oversea now, please provide information such as start date of physically being in Hubei/Oversea, reason for staying there, current health status, etc."></textarea>
                 </div>
 
                 <div>
@@ -248,13 +248,13 @@
                     <label for="beenhubeiResult">*Investigation Result</label>
                     <select id="beenhubeiResult" class="form-control result-sel" name="result">
                         <option value=null style="display: none"></option>
-                        <option value=2>Has NOT been to Hubei/Wenzhou</option>
-                        <option value=4>Confirmed having been to Hubei/Wenzhou</option>
+                        <option value=2>Has NOT been to Hubei/Oversea</option>
+                        <option value=4>Confirmed having been to Hubei/Oversea</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="beenhubeiNotes" class="notes">Notes</label>
-                    <textarea id="beenhubeiNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="Mandatory field if confirmed been to Hubei/Wenzhou, please provide more details, such as start date & leave date of having been in Hubei/Wenzhou, train & flight #, stay location and stay reasons etc."></textarea>
+                    <textarea id="beenhubeiNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="Mandatory field if confirmed been to Hubei/Oversea, please provide more details, such as start date & leave date of having been in Hubei/Oversea, train & flight #, stay location and stay reasons etc."></textarea>
                 </div>
 
                 <div>
@@ -269,7 +269,7 @@
             
  
             
-     <!--    My investigation center: back from Hubei/Wenzhou-->
+     <!--    My investigation center: back from Hubei/Oversea-->
     <div id="backhubei" class="input-area">
         <h3 class="text-center"><strong>Investigation Result Submission</strong></h3>
         <h4 class="text-center case-title"></h4>
@@ -280,13 +280,13 @@
                     <label for="backhubeiResult">*Investigation Result</label>
                     <select id="backhubeiResult" class="form-control result-sel" name="result">
                         <option value=null style="display: none"></option>
-                        <option value=2>Not coming back from Hubei/Wenzhou</option>
-                        <option value=1>Confirmed coming back from Hubei/Wenzhou</option>
+                        <option value=2>Not coming back from Hubei/Oversea</option>
+                        <option value=1>Confirmed coming back from Hubei/Oversea</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="backhubeiNotes" class="notes">Notes</label>
-                    <textarea id="backhubeiNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="Mandatory field if confirmed coming back from Hubei/Wenzhou, please provide more details, such as leave date of having been in Hubei/Wenzhou, train & flight #, personal health status etc."></textarea>
+                    <textarea id="backhubeiNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="Mandatory field if confirmed coming back from Hubei/Oversea, please provide more details, such as leave date of having been in Hubei/Oversea, train & flight #, personal health status etc."></textarea>
                 </div>
 
                 <div>
@@ -299,7 +299,35 @@
         </div> 
     </div>                 
  
-                              
+       <!--    My investigation center: outside GZ/FS-->
+    <div id="outsidework" class="input-area">
+        <h3 class="text-center"><strong>Investigation Result Submission</strong></h3>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="outsideworkResult">*Investigation Result</label>
+                    <select id="outsideworkResult" class="form-control result-sel" name="result">
+                        <option value=null style="display: none"></option>
+                        <option value=2>Wrong survey input: Currently in Guangzhou or Fushan</option>
+                        <option value=1>Confirmed currently outside Guangzhou and Fushan</option>
+                    </select>
+                </div>
+                <div class="form-group" style="display: none">
+                    <label for="outsideworkNotes" class="notes" >Notes</label>
+                    <textarea id="outsideworkNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="">Confirmed currently outside Guangzhou and Fushan</textarea>
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-submit btn-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for No Revoke</button>
+                    <button type="button" class="btn btn-submit btn-red" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Revoke</button>
+                    <label class="text-center investigator"></label>
+                </div>
+
+            </form>
+        </div> 
+    </div>                               
                                                            
     <!--    My investigation center: View Completed Cases-->
     <div id="viewcompletecase" class="input-area">

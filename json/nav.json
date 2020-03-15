@@ -23,8 +23,8 @@
           {"stat": "beenhubei",
          "value": 10    
         },
-          {"stat": "backhubei",
-         "value": 10    
+          {"stat": "outsidework",
+         "value": 15    
         },
           {"stat": "totreview",
          "value": 10    
@@ -53,14 +53,15 @@
          "value": 20    
         },
           {"stat": "monitorbeenhubei",
-         "value": 15    
-        },
-          {"stat": "monitorbackhubei",
-         "value": 0    
+         "value": 15   
         },
           {"stat": "monitorstafftravel",
          "value": 10    
         },
+           {"stat": "monitoroutgzfs",
+         "value": 20    
+        },       
+  
           {"stat": "monitorclose2risky",
          "value": 100    
         }        

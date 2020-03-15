@@ -165,7 +165,7 @@ function assignPortalAccess() {
     };
 
     //    BM
-    if (urole == 3) {
+    if (urole == 4) {
         accessctr = {
             "maindashdrill": 1,
             "submitinvestigate": 1,
@@ -248,7 +248,7 @@ function assignPortalAccess() {
                 },
                 {
                     "menuname": "myMonito",
-                    "menuvis": 1
+                    "menuvis": 0
                 },
                 {
                     "menuname": "searchStaff",
@@ -305,7 +305,7 @@ function assignPortalAccess() {
                 },
                 {
                     "menuname": "searchStaff",
-                    "menuvis": 1
+                    "menuvis": 0
                 },
                 {
                     "menuname": "myRevoke",
@@ -326,6 +326,112 @@ function assignPortalAccess() {
         ]
         };
     };
+    if (urole == 7) {
+        accessctr = {
+            "maindashdrill": 0,
+            "submitinvestigate": 0,
+            "submitcasereview": 0,
+            "submitrevokerequest": 0,
+            "submitreactivaterequest": 0,
+            "submitreactivatereview": 0,
+            "submitactiondone": 0,
+            "revokestaff": "none",
+            "reactivatestaff": "none",
+            "searchstaff": "all",
+            "menusshow": [
+                {
+                    "menuname": "masterDash",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "userDash",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myInvest",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myMonito",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "searchStaff",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myRevoke",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myReview",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myAction",
+                    "menuvis": 0
+                },
+                 {
+                    "menuname": "supportCenter",
+                    "menuvis": 1
+                }   
+        ]
+        };
+    };
+
+    if (urole == 8) {
+        accessctr = {
+            "maindashdrill": 1,
+            "submitinvestigate": 0,
+            "submitcasereview": 0,
+            "submitrevokerequest": 0,
+            "submitreactivaterequest": 0,
+            "submitreactivatereview": 0,
+            "submitactiondone": 0,
+            "revokestaff": "none",
+            "reactivatestaff": "none",
+            "searchstaff": "all",
+            "menusshow": [
+                {
+                    "menuname": "masterDash",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "userDash",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myInvest",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myMonito",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "searchStaff",
+                    "menuvis": 1
+                },
+                {
+                    "menuname": "myRevoke",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myReview",
+                    "menuvis": 0
+                },
+                {
+                    "menuname": "myAction",
+                    "menuvis": 0
+                },
+                 {
+                    "menuname": "supportCenter",
+                    "menuvis": 1
+                }   
+        ]
+        };
+    };
+
 };
 var uid = null;
 var urole = null;
