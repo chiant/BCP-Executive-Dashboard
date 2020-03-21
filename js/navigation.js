@@ -240,15 +240,15 @@ function assignPortalAccess() {
                 },
                 {
                     "menuname": "userDash",
-                    "menuvis": 0
+                    "menuvis": 1
                 },
                 {
                     "menuname": "myInvest",
-                    "menuvis": 0
+                    "menuvis": 1
                 },
                 {
                     "menuname": "myMonito",
-                    "menuvis": 0
+                    "menuvis": 1
                 },
                 {
                     "menuname": "searchStaff",
@@ -256,7 +256,7 @@ function assignPortalAccess() {
                 },
                 {
                     "menuname": "myRevoke",
-                    "menuvis": 0
+                    "menuvis": 1
                 },
                 {
                     "menuname": "myReview",
@@ -463,6 +463,8 @@ $(function () {
     uid = window.parent.userid;
     urole = window.parent.userrole;
     uname = window.parent.username;
+    bkflag = window.parent.backupflag;
+    
     curactive = $("#masterDash");
 
     if (uname != null) {
@@ -490,9 +492,14 @@ $(function () {
             $('#' + accessctr.menusshow[i].menuname).hide();
         }
     };
+    
+    if (bkflag) {
+        $('#myRevokeReacti').hide();
+        $('#myReview').hide();
+    }
 
     navdatalink = '../json/nav.json';
-    //    navdatalink = 'http://serverlink?userid=' + uid;
+    //    navdatalink = 'http://hkl20091115.hc.cloud.hk.hsbc：5080/nav?userid=' + uid;
     //    only uid required for parameter
     loadNavData(navdatalink);
 

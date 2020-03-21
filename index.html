@@ -2,6 +2,15 @@
 <html lang="en" style="height: 100%">
 
     <head>
+    
+    <script>
+            var userjson = sessionStorage.getItem("curr_user");
+            if (userjson == null) {
+//                location.replace("../main");
+            } else {
+                var user_json = JSON.parse(userjson);
+            }
+    </script>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,13 +32,36 @@
     var userid = null;
     var userrole = null;
     var username = null;
+    var backupname = null;
+    var backupflag = null;
+    
     var userjson = null;
+    var user_json = null;
+    
     $(function () {
-//            userjson = seesionStorage.getItem("curr_user");
-        //  include userid in the userjson object, and assign value to userid and userrole.
+        
+            userjson = sessionStorage.getItem("curr_user");
+            user_json = JSON.parse(userjson);
+            
+            console.log(user_json);
+            
+//            userid = user_json.UserID;
+//            userrole = user_json.GroupID; 
+//            username = user_json.name;
+//            backupname = user_json.backupName;
+    
+//            if (backupflag.length >5) {
+//                backupflag = 0;
+//            } else {
+//                backupflag = 1;
+//            }
+        
+         //  test only, delete following 4 statements when promoting online.
+               
             userid="u0002";
-            userrole=4;
-            username="Brian Sun";
+            userrole=5;
+            username="Brian Sun";            
+            backupflag = 1;            
 
     });
 </script>
