@@ -115,7 +115,38 @@
             </form>
         </div> 
     </div>
+    <!--    My investigation center: Red or No Health Code-->
+    <div id="healthcode" class="input-area">
+        <h3 class="text-center"><strong>Investigation Result Submission</strong></h3>
+        <h4 class="text-center case-title"></h4>
+        <label class="self-report"></label>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="healthcodeResult">*Investigation Result</label>
+                    <select id="healthcodeResult" class="form-control result-sel" name="result">
+                        <option value=null style="display: none"></option>
+                        <option value=2>False Red Code: Input Error, has Blue or Green Code</option>
+                        <option value=1>Confirmed Red Code</option>
+                        <option value=4>False No Code: Input Error, has Blue or Green Code</option>
+                        <option value=3>Confirmed No Code: Currently Unwell or in Oversea Countries</option>
+                        <option value=6>Confirmed No Code: No Unwell Symptoms and Reside in China, will Apply Soon</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="healthcodeNotes" class="notes">Notes</label>
+                    <textarea id="healthcodeNotes" name="submitternotes" class="form-control note-field" rows="3" placeholder="Mandatory field if red code or no code is confirmed, please verify staff's current location and health status, and provide reasons if no revoke decision to be submitted"></textarea>
+                </div>
 
+                <div>
+                    <button type="button" class="btn btn-submit btn-green" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for No Revoke</button>
+                    <button type="button" class="btn btn-submit btn-red" disabled="disabled" data-toggle="modal" data-target="#modalSubmit">Submit for Revoke</button>
+                    <label class="text-center investigator"></label>
+                </div>
+
+            </form>
+        </div> 
+    </div>
     <!--    My investigation center: Health Issue-->
     <div id="healthcase" class="input-area">
         <h3 class="text-center"><strong>Investigation Result Submission</strong></h3>

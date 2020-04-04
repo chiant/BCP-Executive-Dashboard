@@ -8,7 +8,10 @@
          {"stat": "nonresp",
          "value": 10    
         },
-          {"stat": "healthcase",
+          {"stat": "healthcode",
+         "value": 5    
+        },
+        {"stat": "healthcase",
          "value": 10    
         },
           {"stat": "closecontact",
@@ -40,7 +43,10 @@
         },
  
         
-          {"stat": "monitorhealthcase",
+         {"stat": "monitorhealthcode",
+         "value": 5    
+        },
+        {"stat": "monitorhealthcase",
          "value": 10    
         },
           {"stat": "monitorclosecontact",

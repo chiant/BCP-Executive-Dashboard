@@ -778,6 +778,9 @@
                 if (pagesubtype == 'nonresp') {
                     infotitle = 'Non-Respondent';
                 };
+                if (pagesubtype == 'healthcode') {
+                    infotitle = 'Red or No Health Code';
+                };
                 if (pagesubtype == 'healthcase') {
                     infotitle = 'Health Issue';
                 };
@@ -797,7 +800,7 @@
 //                    infotitle = 'Back from Hubei/Oversea';
 //                };
                 if (pagesubtype == 'outsidework') {
-                    infotitle = 'Outside GZ/FS';
+                    infotitle = 'Outside GD';
                 };
                 if (pagesubtype == 'viewcompletecase') {
                     infotitle = 'View Submitted Cases';
